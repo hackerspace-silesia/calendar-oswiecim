@@ -78,17 +78,17 @@ class EventCreateView(EventFieldsMixin, CreateView):
 
 
 class EventUpdateView(EventFieldsMixin, UpdateView):
-    def post(self, request, *args, **kwargs):
-        if not self.has_access(obj, request.user):
+    def get(self, request, *args, **kwargs):
+        if not self.has_access(request.user):
             return redirect('/')
         return super().get(request, *args, **kwargs)
 
-    def has_access(self):
+    def has_access(self, user):
         obj = self.get_object()
         return obj.orgs.filter(pk=user.organizer.pk).exists()
 
     def post(self, request, *args, **kwargs):
-        if not self.has_access(obj, request.user):
+        if not self.has_access(request.user):
             return redirect('/')
         return super().post(request, *args, **kwargs)
 
