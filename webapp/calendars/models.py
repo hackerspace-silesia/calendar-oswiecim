@@ -1,5 +1,7 @@
 from ckeditor.fields import RichTextField
 from django.contrib.gis.db import models
+from django.contrib.auth.models import User
+from django.contrib.admin import widgets  
 
 
 class Event(models.Model):
@@ -20,6 +22,8 @@ class Event(models.Model):
 class Organizer(models.Model):
     name = models.CharField(max_length=200, verbose_name="Nazwa")
     logo = models.ImageField(upload_to='logo/%m/', blank=True, null=True, verbose_name="Logo")
+    user = models.OneToOneField(User, null=True, related_name='organizer')
+    events = models.ManyToManyField(Event, related_name='orgs')
 
     def __str__(self):
         return self.name

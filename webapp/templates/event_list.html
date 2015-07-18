@@ -1,4 +1,24 @@
 {% extends 'index.html' %}
+{% block content %}
+    <ul>
+        {% for event in events %}
+            <li>
+                <a href="{% url 'event_details' event.id %}">
+                    {{ event.title }}
+                </a>
+
+                {% if request.user and request.user.organizer in event.orgs.all %}
+                    <a  class='btn btn-xs btn-info' href="{% url 'event_update' event.pk %}" >
+                        edytuj
+                    </a>
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+    {% if request.user and request.user.organizer != None %}
+        <a class='btn btn-xs btn-primary' href="{% url 'event_create' %}" > stwórz nowe zdarzenie </a>
+    {% endif %}
 {% load staticfiles %}
 
 {% block content %}
