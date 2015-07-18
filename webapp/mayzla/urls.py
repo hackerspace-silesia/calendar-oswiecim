@@ -21,7 +21,7 @@ from calendars.views import HomeView, EventDetailView, EventListView
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name="index"),
     url(r'^wydarzenie/$', EventListView.as_view(), name="event_list"),
-    url(r'^wydarzenie/(?P<pk>\d+)/$', EventDetailView.as_view(), name="event_detail"),
+    url(r'^wydarzenie/(?P<pk>\d+)/$', EventDetailView.as_view(), name="event_details"),
     url(r'^onas/$', TemplateView.as_view(template_name="about_us.html"), name="about_us"),
     url(r'^zaloguj/$', lambda req: req, name="login"),
     url(r'^wyloguj/$', lambda req: req, name="logout"),
