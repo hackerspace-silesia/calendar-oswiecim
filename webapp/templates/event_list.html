@@ -1,10 +1,15 @@
 {% extends 'index.html' %}
+{% load staticfiles %}
+
 {% block content %}
-    <ul>
-        {% for event in events %}
-            <li>
-                <a href="{% url 'event_details' event.id %}">{{ event.title }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div id='calendar'></div>
+{% endblock %}
+{% block extra_css %}
+    <link href="{% static 'css/fullcalendar.min.css' %}" rel="stylesheet">
+{% endblock %}
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/vendor/moment.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendor/fullcalendar/fullcalendar.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendor/fullcalendar/lang/pl.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/event-list.js' %}"></script>
 {% endblock %}
