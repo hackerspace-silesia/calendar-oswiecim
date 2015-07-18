@@ -24,7 +24,6 @@
             </button>
             <a class="navbar-brand" href="{% url 'index' %}">Kalendarz Oświęcimia</a>
         </div>
-
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'event_list' %}">Lista wydarzeń</a></li>
@@ -54,6 +53,13 @@
     </div>
 </nav>
 <div class="container">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
     {% block content %}
     {% endblock %}
 </div>
