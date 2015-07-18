@@ -1,3 +1,7 @@
+import json
+from django.core import serializers
+from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from django.views.generic import ListView
@@ -7,9 +11,11 @@ from django.views.generic.edit import FormView
 
 from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
+from pip._vendor.html5lib import serializer
 
 from .models import Event
 from .forms import LoginForm
+
 
 class HomeView(TemplateView):
     template_name = 'index.html'
@@ -65,10 +71,25 @@ class LoginView(FormView):
 
         login(request, user)
         messages.success(request, 'Zalogowano')
-        return True     
+        return True
 
 
 def logout_view(request):
     logout(request)
     messages.success(request, 'Wylogowano')
     return redirect('/')
+
+
+def events_api(request):
+    month = request.GET.get('month', None)
+    year = request.GET.get('year', None)
+
+    if year and month:
+        events = Event.objects.filter(Q(start_time__year=year,
+                             start_time__month=month)|
+                             Q(start_time__year=year,
+                             start_time__month=month))
+        return HttpResponse(serializers.serialize('json', events, fields=('title','description', 'start_time', 'end_time')), content_type="application/json")
+    else:
+        return HttpResponse(status=400, content_type='text/html')
+
