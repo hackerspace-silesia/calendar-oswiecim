@@ -1,4 +1,4 @@
-{% load thumbnail %}
+{% load thumbnail staticfiles %}
 <div class="col-xs-12 col-sm-4">
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -9,6 +9,8 @@
                 {% thumbnail event.image "300x100" crop="center" as im %}
                     <img src="{{ im.url }}" class="img-responsive img-rounded event-img">
                 {% endthumbnail %}
+            {% else %}
+                <img src="{% static 'img/event.png' %}" class="img-responsive img-rounded event-img">
             {% endif %}
             <i class="glyphicon glyphicon-calendar"></i> {{ event.start_time|date:"j.m.Y" }}
         </div>

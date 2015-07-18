@@ -17,16 +17,18 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
-from calendars.views import HomeView, EventDetailView, EventListView
+from calendars.views import HomeView, EventDetailView, EventListView, events_api
 from calendars.views import LoginView, logout_view
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name="index"),
+    url(r'^wydarzenie/json/$', events_api, name="event_json_list"),
     url(r'^wydarzenie/$', EventListView.as_view(), name="event_list"),
     url(r'^wydarzenie/(?P<pk>\d+)/$', EventDetailView.as_view(), name="event_details"),
     url(r'^onas/$', TemplateView.as_view(template_name="about_us.html"), name="about_us"),
     url(r'^zaloguj/$', LoginView.as_view(), name="login"),
     url(r'^wyloguj/$', logout_view, name="logout"),
+    url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
 

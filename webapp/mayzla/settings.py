@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'calendars',
-    'sorl.thumbnail'
+    'sorl.thumbnail',
+    'ckeditor'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,3 +111,17 @@ SPATIALITE_LIBRARY_PATH = os.environ.get(
     "SPATIALITE_LIBRARY_PATH",
     '/usr/local/lib/mod_spatialite.dylib'
 )
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ]    },
+}
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_UPLOAD_PATH = 'uploadfiles'

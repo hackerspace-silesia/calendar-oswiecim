@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.contrib.gis.db import models
 
 
@@ -5,7 +6,7 @@ class Event(models.Model):
     start_time = models.DateTimeField(verbose_name="Start wydarzenia")
     end_time = models.DateTimeField(blank=True, null=True, verbose_name="Koniec wydarzenia")
     title = models.CharField(max_length=120, verbose_name="Tytuł")
-    description = models.TextField(verbose_name="Opis")
+    description = RichTextField()
     image = models.ImageField(upload_to='event/%Y/%m/%d/', blank=True, null=True, verbose_name="Plakat")
     place = models.CharField(max_length=120, verbose_name="Miejsce")
     point = models.PointField(blank=True, null=True, verbose_name="Miejsce na mapie")
