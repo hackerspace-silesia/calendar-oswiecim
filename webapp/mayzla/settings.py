@@ -73,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mayzla.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -107,4 +106,7 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-SPATIALITE_LIBRARY_PATH=os.environ.get("SPATIALITE_LIBRARY_PATH",'/usr/local/lib/mod_spatialite.dylib')
+SPATIALITE_LIBRARY_PATH = os.environ.get(
+    "SPATIALITE_LIBRARY_PATH",
+    '/usr/local/lib/mod_spatialite.dylib'
+)

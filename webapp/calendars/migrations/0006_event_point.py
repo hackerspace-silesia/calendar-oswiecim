@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='event',
             name='point',
-            field=django.contrib.gis.db.models.fields.PointField(blank=True, null=True, srid=4326),
+            field=django.contrib.gis.db.models.fields.PointField(blank=True, null=True, srid=4326, verbose_name='Miejsce na mapie'),
         ),
     ]
