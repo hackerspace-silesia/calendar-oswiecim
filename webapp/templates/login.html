@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-xs-4 col-xs-offset-4 form-signin well">
+        <h1>Zaloguj się</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.errors }}
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <button type='submit' class='btn btn-primary'>Zaloguj się</button>
+        </form>
+    </div>
+{% endblock %}
