@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1> Hello Calendar World!</h1>
-    <ul>
-        {% for event in events %}
-        <li>
-            {{ event.title }}
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="col-xs-12">
+        <div class="jumbotron">
+            <h1>Oświęcimski Kalendarz Wydarzeń</h1>
+
+            <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured
+                content or information.</p>
+
+            <p><a class="btn btn-primary btn-lg" href="{% url 'about_us' %}">Dowiedz się więcej...</a></p>
+        </div>
+        {% include 'partials/_event_list.html' %}
+    </div>
 {% endblock %}

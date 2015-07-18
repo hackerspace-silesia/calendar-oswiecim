@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from calendars.views import HomeView
+from django.views.generic import TemplateView
+from calendars.views import HomeView, EventDetailView, EventListView
 
 urlpatterns = [
-    url(r'^$', HomeView.as_view()),
+    url(r'^$', HomeView.as_view(), name="index"),
+    url(r'^wydarzenie/$', EventListView.as_view(), name="event_list"),
+    url(r'^wydarzenie/(?P<pk>\d+)/$', EventDetailView.as_view(), name="event_detail"),
+    url(r'^onas/$', TemplateView.as_view(template_name="about_us.html"), name="about_us"),
+    url(r'^zaloguj/$', lambda req: req, name="login"),
+    url(r'^wyloguj/$', lambda req: req, name="logout"),
     url(r'^admin/', include(admin.site.urls)),
 ]
