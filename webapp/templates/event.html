@@ -28,6 +28,24 @@
             {% endif %}
         </div>
     </div>
+    <div  class='row'>
+        <div class='col-xs-6'>
+            <h3>
+                <i class="glyphicon glyphicon-user"></i>
+                Organizatorzy
+            </h3>
+            <ul>
+                {% for org in event.orgs.all %}
+                    <li>
+                        {% if org.logo %} 
+                            <img src='logo' src='{{ org.logo }}'/>
+                        {% endif %}
+                        <strong>{{ org.name }}</strong>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}
 {% block extra_css %}
     <link rel="stylesheet" href="//openlayers.org/en/v3.7.0/css/ol.css" type="text/css">
