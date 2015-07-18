@@ -1,10 +1,16 @@
+{% load thumbnail %}
 <div class="col-xs-12 col-sm-4">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title"><a href="{% url 'event_details' event.id %}">{{ event.title }}</a></h3>
         </div>
         <div class="panel-body">
-            {{ event.description }}
+            {% if event.image %}
+                {% thumbnail event.image "300x100" crop="center" as im %}
+                    <img src="{{ im.url }}" class="img-responsive img-rounded event-img">
+                {% endthumbnail %}
+            {% endif %}
+            <i class="glyphicon glyphicon-calendar"></i> {{ event.start_time|date:"j.m.Y" }}
         </div>
     </div>
 </div>
