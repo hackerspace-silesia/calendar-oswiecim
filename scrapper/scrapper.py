@@ -58,14 +58,8 @@ def scrape_html(eid, html):
     if table_data.get('tytuł') is None:
         return None
 
-    return {
-        'id': str(eid),
-        'title': table_data['tytuł'],
-        'place': table_data['miejsce'],
-        'description': table_data['opis'],
-        'add_date': table_data['dodany'],
-        'event_date': table_data['data / godzina'],
-    } 
+    table_data['old_eid'] = str(eid)
+    return table_data
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
