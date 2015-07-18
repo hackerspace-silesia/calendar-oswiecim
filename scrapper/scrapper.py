@@ -9,22 +9,23 @@ import sys
 URI = 'http://kalendarz.oiloswiecim.pl/index.php'
 
 
-def get_data():
-    if len(sys.argv) < 3:
-        sys.stderr.write('usage: scrapper.py FIRST_ID LAST_ID \n')
-        exit(-1)
-    start, end = sys.argv[1:3]
-    return [
-        (yield from get_calendar_data(eid))
-        for eid in range(int(start), int(end) + 1)
+@asyncio.coroutine
+def get_data(start, end):
+    data = []
+    couroutines = [
+        set_calendar_data(data, eid)
+        for eid in range(start, end)
     ]
+    yield from asyncio.wait(couroutines)
+    return data
 
 
 @asyncio.coroutine
-def get_calendar_data(eid):
+def set_calendar_data(data_list, eid):
     html = yield from get_html(eid)
     data = yield from scrape_html(eid, html)
-    return data
+    if data is not None:
+        data_list.append(data)
 
 
 @asyncio.coroutine
@@ -67,8 +68,13 @@ def scrape_html(eid, html):
     } 
 
 if __name__ == '__main__':
+    if len(sys.argv) < 3:
+        sys.stderr.write('usage: scrapper.py FIRST_ID LAST_ID\n')
+        exit(-1)
+    start, end = sys.argv[1:3]
     loop = asyncio.get_event_loop()
-    data = loop.run_until_complete(get_data())
+    gen = get_data(int(start), int(end) + 1)
+    data = loop.run_until_complete(gen)
     loop.close()
     json.dump(data, sys.stdout, indent=4)
 
