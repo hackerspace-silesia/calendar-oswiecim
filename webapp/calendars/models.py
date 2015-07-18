@@ -12,7 +12,9 @@ class Event(models.Model):
     image = models.ImageField(upload_to='event/%Y/%m/%d/', blank=True, null=True, verbose_name="Plakat")
     place = models.CharField(max_length=120, verbose_name="Miejsce")
     point = models.PointField(blank=True, null=True, verbose_name="Miejsce na mapie")
+    orgs = models.ManyToManyField('Organizer', related_name='events')
 
+    url = models.URLField(blank=True, null=True,verbose_name="Adres www")
     objects = models.GeoManager()
 
     def __str__(self):
@@ -22,8 +24,7 @@ class Event(models.Model):
 class Organizer(models.Model):
     name = models.CharField(max_length=200, verbose_name="Nazwa")
     logo = models.ImageField(upload_to='logo/%m/', blank=True, null=True, verbose_name="Logo")
-    user = models.OneToOneField(User, null=True, related_name='organizer')
-    events = models.ManyToManyField(Event, related_name='orgs')
+    user = models.OneToOneField(User, blank=True, null=True, related_name='organizer')
 
     def __str__(self):
         return self.name
