@@ -1,4 +1,5 @@
 import json
+from braces.views import LoginRequiredMixin
 from django.core import serializers
 from django.db.models import Q
 from django.http import HttpResponse
@@ -30,22 +31,6 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['events'] = Event.objects.all()
         return context
-
-
-class LoginRequiredMixin(object):
-    @classmethod
-    def as_view(cls, **initkwargs):
-        view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
-
-        @login_required
-        @wraps(view)
-        def inner_view(request, *args, **kwargs):
-            try:
-                _ = request.user.organizer
-            except ObjectDoesNotExist:
-                return redirect('/')
-            return view(request, *args, **kwargs)
-        return inner_view
 
 
 class EventListView(ListView):
