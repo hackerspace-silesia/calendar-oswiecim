@@ -3,6 +3,7 @@
 
 {% block content %}
     <div id='calendar'></div>
+    <p>{{ events_as_json }}</p>
 {% endblock %}
 {% block extra_css %}
     <link href="{% static 'css/fullcalendar.min.css' %}" rel="stylesheet">

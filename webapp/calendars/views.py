@@ -1,27 +1,17 @@
-import json
 from braces.views import LoginRequiredMixin
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.core import serializers
 from django.db.models import Q
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.core.urlresolvers import reverse
-
+from django.shortcuts import redirect
 from django.views.generic import ListView
-from django.contrib.auth.decorators import login_required
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import FormView, CreateView, UpdateView
-from django.core.exceptions import ObjectDoesNotExist
+from django.views.generic.edit import CreateView, FormView, UpdateView
 
-from django.contrib.auth import logout, login, authenticate
-from django.contrib import messages
-from pip._vendor.html5lib import serializer
-
-from functools import wraps
-
+from .forms import EventForm, LoginForm
 from .models import Event
-from .forms import LoginForm, EventForm
-
 
 
 class HomeView(TemplateView):
@@ -37,6 +27,13 @@ class EventListView(ListView):
     model = Event
     template_name = 'event_list.html'
     context_object_name = 'events'
+
+    def get_context_data(self, **kwargs):
+        context = super(EventListView, self).get_context_data(**kwargs)
+        context['events_as_json'] = serializers.serialize(
+            'json', self.object_list,
+            fields=('title', 'description', 'start_time', 'end_time'))
+        return context
 
 
 class EventDetailView(DetailView):
@@ -125,11 +122,13 @@ def events_api(request):
     year = request.GET.get('year', None)
 
     if year and month:
-        events = Event.objects.filter(Q(start_time__year=year,
-                             start_time__month=month)|
-                             Q(start_time__year=year,
-                             start_time__month=month))
-        return HttpResponse(serializers.serialize('json', events, fields=('title','description', 'start_time', 'end_time')), content_type="application/json")
+        events = Event.objects.filter(
+            Q(start_time__year=year, start_time__month=month) |
+            Q(start_time__year=year, start_time__month=month))
+        return HttpResponse(
+            serializers.serialize(
+                'json', events,
+                fields=('title', 'description', 'start_time', 'end_time')),
+            content_type="application/json")
     else:
         return HttpResponse(status=400, content_type='text/html')
-
