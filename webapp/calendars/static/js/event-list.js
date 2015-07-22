@@ -19,7 +19,7 @@
       var cacheItem = cache[cacheKey];
       if (!cacheItem) {
         cache[cacheKey] = [];
-        $.getJSON('json', {
+        $.getJSON('json/', {
           year: date.format('YYYY'),
           month: date.format('MM')
         }).done(function(fullCalendarData) {

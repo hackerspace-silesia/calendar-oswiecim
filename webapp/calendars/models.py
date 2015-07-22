@@ -5,8 +5,8 @@ from django.contrib.admin import widgets
 
 
 class Event(models.Model):
-    start_time = models.DateTimeField(verbose_name="Start wydarzenia")
-    end_time = models.DateTimeField(blank=True, null=True, verbose_name="Koniec wydarzenia")
+    start_time = models.DateTimeField(db_index=True, verbose_name="Start wydarzenia")
+    end_time = models.DateTimeField(db_index=True, blank=True, null=True, verbose_name="Koniec wydarzenia")
     title = models.CharField(max_length=120, verbose_name="Tytuł")
     description = RichTextField()
     image = models.ImageField(upload_to='event/%Y/%m/%d/', blank=True, null=True, verbose_name="Plakat")
