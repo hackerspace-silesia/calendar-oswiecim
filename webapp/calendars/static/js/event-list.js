@@ -1,6 +1,5 @@
 (function(document, window, $, moment) {
   $(document).ready(function() {
-    var currentDate = moment();
     var cache = {};
 
     var calendar = $('#calendar');
@@ -31,24 +30,28 @@
       }
     }
 
-    calendar.fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,basicWeek,basicDay'
-      },
-      defaultDate: currentDate,
-      editable: true,
-      eventLimit: true,
-      eventClick: function(eventObj) {
-        document.location = window.location + eventObj._id;
-      },
-      viewRender: function(view) {
-        updateCalendar(view.intervalStart);
-      }
-    });
-
-    updateCalendar(currentDate);
-
+    function initCalendar() {
+      var currentDate = moment();
+      var cacheKey = currentDate.format('MM-YYYY');
+      calendar.fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,basicWeek,basicDay'
+        },
+        defaultDate: currentDate,
+        editable: true,
+        eventLimit: true,
+        eventClick: function(eventObj) {
+          document.location = window.location + eventObj._id;
+        },
+        viewRender: function(view) {
+          updateCalendar(view.intervalStart);
+        }
+      });
+      cache[cacheKey] = mapCalendarData(window.TODAY_DATA);
+      calendar.fullCalendar('addEventSource', cache[cacheKey]);
+    }
+    initCalendar();
   });
 })(document, window, jQuery, moment);
