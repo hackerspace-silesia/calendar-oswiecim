@@ -3,12 +3,14 @@
 
 {% block content %}
     <div id='calendar'></div>
-    <p>{{ events_as_json }}</p>
 {% endblock %}
 {% block extra_css %}
     <link href="{% static 'css/fullcalendar.min.css' %}" rel="stylesheet">
 {% endblock %}
 {% block extra_js %}
+    <script type="text/javascript">
+      window.TODAY_DATA = {{ events_as_json | safe}};
+    </script>
     <script type="text/javascript" src="{% static 'js/vendor/moment.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/vendor/fullcalendar/fullcalendar.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/vendor/fullcalendar/lang/pl.js' %}"></script>
