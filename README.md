@@ -28,6 +28,6 @@ WEBP wymaga libwebp-devel
 WEBPMUX wymaga libwebp-devel
 ```
 ###### sqlite3 jako spatial database
-Konieczne jest zainstalowani GEOS, GDAL, i SpatiaLite.
-Poza tym, należy upewnić się, python został skompilowany z opcją `--enable-loadable-sqlite-extensions`.
+Konieczne jest zainstalowanie GEOS, GDAL i SpatiaLite.
+Poza tym należy upewnić się, że python został skompilowany z opcją `--enable-loadable-sqlite-extensions`.
 
