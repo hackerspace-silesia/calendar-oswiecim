@@ -1,6 +1,8 @@
 django==1.8.3
 pillow==2.9.0
 sorl-thumbnail==12.3
+django-widget-tweaks==1.4.1
 django-ckeditor==4.5.0
 django-braces==1.8.1
 pytz
+
