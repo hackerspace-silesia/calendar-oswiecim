@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
 {% block content %}
-    <div class="col-xs-4 col-xs-offset-4 form-signin well">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 form-signin well">
         <h1>Zaloguj się</h1>
         <form method="post">
             {% csrf_token %}
@@ -9,7 +11,7 @@
                 <div class="form-group">
                     {{ field.errors }}
                     {{ field.label_tag }}
-                    {{ field }}
+                    {{ field|add_class:'form-control' }}
                 </div>
             {% endfor %}
             <button type='submit' class='btn btn-primary'>Zaloguj się</button>

@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     'calendars',
     'sorl.thumbnail',
-    'ckeditor'
+    'ckeditor',
+    'widget_tweaks'
 )
 
 MIDDLEWARE_CLASSES = (
