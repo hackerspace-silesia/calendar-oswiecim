@@ -4,8 +4,8 @@ from .models import Event
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput())
+    username = forms.CharField(label='Nazwa użytkownika');
+    password = forms.CharField(label='Hasło', widget=forms.PasswordInput())
 
 
 class EventForm(forms.ModelForm):
