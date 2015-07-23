@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load thumbnail staticfiles %}
 {% block content %}
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <h1>{{ event.title }}</h1>
             Start wydarzenia:
             <div class="alert alert-success event-time">
@@ -29,7 +29,9 @@
                     {% for org in event.orgs.all %}
                         <li>
                             {% if org.logo %}
-                                <img src='logo' src='{{ org.logo }}'/>
+                                {% thumbnail org.logo "x36" as logo %}
+                                <img src='{{ logo.url }}'/>
+                                {% endthumbnail %}
                             {% endif %}
                             <strong>{{ org.name }}</strong>
                         </li>
@@ -41,9 +43,15 @@
             {% endif %}
 
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-6 poster">
             {% if event.image %}
-                <img src="{{ event.image.url }}">
+                {% if event.image.width > 1024 %}
+                    {% thumbnail event.image "1024" as poster %}
+                    <img src="{{ poster.url }}">
+                    {% endthumbnail %}
+                {% else %}
+                    <img src="{{ event.image.url }}">
+                {% endif %}
             {% endif %}
         </div>
     </div>
