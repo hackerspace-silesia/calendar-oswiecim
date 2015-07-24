@@ -130,3 +130,5 @@ CKEDITOR_UPLOAD_PATH = 'uploadfiles'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+THUMBNAIL_PRESERVE_FORMAT=True
