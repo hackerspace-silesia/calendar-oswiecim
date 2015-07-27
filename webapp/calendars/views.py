@@ -1,3 +1,5 @@
+import datetime
+
 from braces.views import LoginRequiredMixin
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -19,7 +21,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        context['events'] = Event.objects.all()
+        context['events'] = Event.objects.filter(start_time__gte=datetime.datetime.now())
         return context
 
 
