@@ -21,7 +21,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        context['events'] = Event.objects.filter(start_time__gte=datetime.datetime.now()).order_by('start_time')[:9]
+        context['events'] = Event.objects.filter(start_time__gte=datetime.datetime.now()).order_by('start_time')[:12]
         return context
 
 

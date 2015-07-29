@@ -1,5 +1,9 @@
 <div class="row">
     {% for event in events %}
         {% include 'partials/_event.html' %}
+        {% if forloop.counter|divisibleby:"3" %}
+            </div>
+            <div class="row">
+        {% endif %}
     {% endfor %}
 </div>
