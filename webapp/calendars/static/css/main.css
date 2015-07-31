@@ -1,3 +1,33 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    /*background-color: #666;*/
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    height:20px;
+}
+/* Sticky footer styles end
+-------------------------------------------------- */
+
 .event-img {
     margin-bottom: 10px;
 }
