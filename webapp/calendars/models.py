@@ -14,12 +14,20 @@ class Event(models.Model):
     point = models.PointField(blank=True, null=True, verbose_name="Miejsce na mapie")
     orgs = models.ManyToManyField('Organizer', related_name='events', verbose_name="Organizator")
 
+    category = models.ForeignKey('Category', blank=True, null=True)
+
     url = models.URLField(blank=True, null=True,verbose_name="Adres www")
     objects = models.GeoManager()
 
     def __str__(self):
         return self.title
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 class Organizer(models.Model):
     name = models.CharField(max_length=200, verbose_name="Nazwa")
