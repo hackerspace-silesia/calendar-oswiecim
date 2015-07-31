@@ -1,6 +1,6 @@
 {% load thumbnail staticfiles %}
 <div class="col-xs-12 col-sm-4">
-    <div class="panel panel-primary">
+    <div class="panel {{ event.category.color|default:"panel-primary" }}">
         <div class="panel-heading">
             <h3 class="panel-title"><a href="{% url 'event_details' event.id %}">{{ event.title }}</a></h3>
         </div>
