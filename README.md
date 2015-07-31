@@ -13,8 +13,8 @@ django-ckeditor==4.5.0
 django-braces==1.8.1
 ```
 
-###### PIL
-Do kompilacji wymagany jest Python.h. W openSUSE plik ten znajdziemy w pakiecie `python3-devel`.
+###### Pillow
+Do kompilacji wymagany są pliki nagłówkowe Pythona. W openSUSE te pliki znajdziemy w pakiecie `python3-devel`.
 Obsługa poszczególnych formatów graficznych jest uzależniona od dodatkowych bibliotek. 
 ```
 TKINTER 
@@ -27,7 +27,15 @@ LITTLECMS2
 WEBP wymaga libwebp-devel
 WEBPMUX wymaga libwebp-devel
 ```
-###### sqlite3 jako spatial database
+
+###### PostGIS
+Konieczne jest zainstalowanie GEOS, GDAL, PROJ.4 i PostGISa.
+Więcej informacji na:
+https://docs.djangoproject.com/en/1.8/ref/contrib/gis/install/postgis/
+oraz
+https://docs.djangoproject.com/en/1.8/ref/contrib/gis/install/geolibs/
+
+###### (DEPRECATED!!) sqlite3 jako spatial database
 Konieczne jest zainstalowanie GEOS, GDAL i SpatiaLite.
 Poza tym należy upewnić się, że python został skompilowany z opcją `--enable-loadable-sqlite-extensions`.
 
