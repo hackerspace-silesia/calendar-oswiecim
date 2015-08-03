@@ -14,7 +14,7 @@ class Event(models.Model):
     point = models.PointField(blank=True, null=True, verbose_name="Miejsce na mapie")
     orgs = models.ManyToManyField('Organizer', blank=True, related_name='events', verbose_name="Organizator")
 
-    category = models.ForeignKey('Category', blank=True, null=True)
+    category = models.ForeignKey('Category', blank=True, null=True, verbose_name="Kategoria")
 
     url = models.URLField(blank=True, null=True,verbose_name="Adres www")
     objects = models.GeoManager()
