@@ -14,7 +14,7 @@ django-braces==1.8.1
 ```
 
 ###### Pillow
-Do kompilacji wymagany są pliki nagłówkowe Pythona. W openSUSE te pliki znajdziemy w pakiecie `python3-devel`.
+Do kompilacji wymagane są pliki nagłówkowe Pythona. W openSUSE te pliki znajdziemy w pakiecie `python3-devel`.
 Obsługa poszczególnych formatów graficznych jest uzależniona od dodatkowych bibliotek. 
 ```
 TKINTER 
