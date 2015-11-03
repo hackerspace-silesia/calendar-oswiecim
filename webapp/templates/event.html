@@ -3,7 +3,12 @@
 {% block content %}
     <div class="row">
         <div class="col-md-6">
-            <h1>{{ event.title }}</h1>
+            <h1>
+                {{ event.title }}
+            </h1>
+            {% if can_edit %}
+                <a class="btn btn-default" href="{% url 'event_update' pk=event.pk %}">EDYTUJ</a> <br/>
+            {% endif %}
             Start wydarzenia:
             <div class="alert alert-success event-time">
                 {{ event.start_time }}

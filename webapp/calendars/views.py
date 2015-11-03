@@ -13,7 +13,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, FormView, UpdateView
 
 from .forms import EventForm, LoginForm
-from .models import Event
+from .models import Event, Organizer
 
 
 class HomeView(TemplateView):
@@ -38,10 +38,54 @@ class EventListView(ListView):
         return context
 
 
-class EventDetailView(DetailView):
+class HasAccessMixin(object):
+
+    def has_access(self, user, action=None):
+        action = action or self.action
+        if user.is_superuser:
+            return True, True
+
+        if not user.has_perm('calendars.%s_category' % action):
+            return False, True
+
+        return True, False
+
+
+class HasAccessWithOrganizerMixin(HasAccessMixin):
+
+    def has_access(self, user, action=None):
+        obj = self.get_object()
+        has_access, final = super().has_access(user, action)
+        if final:
+            return has_access, True
+
+        try:
+            return obj.orgs.filter(pk=user.organizer.pk).exists(), False
+        except Organizer.DoesNotExist:
+            return False, False
+
+
+class HasAccessView(object):
+    def get(self, request, *args, **kwargs):
+        if not self.has_access(request.user)[0]:
+            return redirect('/')
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        if not self.has_access(request.user)[0]:
+            return redirect('/')
+        return super().post(request, *args, **kwargs)
+
+
+class EventDetailView(DetailView, HasAccessWithOrganizerMixin):
     model = Event
     template_name = 'event.html'
     context_object_name = 'event'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['can_edit'] = self.has_access(self.request.user, 'change')[0]
+        return context
 
 
 class EventFieldsMixin(LoginRequiredMixin):
@@ -52,7 +96,9 @@ class EventFieldsMixin(LoginRequiredMixin):
     success_url = '/'
 
 
-class EventCreateView(EventFieldsMixin, CreateView):
+class EventCreateView(EventFieldsMixin, CreateView, HasAccessMixin, HasAccessView):
+    action = 'add'
+
     def post(self, request, *args, **kwargs):
         resp = super().post(request, *args, **kwargs)
         if self.object is not None:
@@ -61,20 +107,8 @@ class EventCreateView(EventFieldsMixin, CreateView):
         return resp
 
 
-class EventUpdateView(EventFieldsMixin, UpdateView):
-    def get(self, request, *args, **kwargs):
-        if not self.has_access(request.user):
-            return redirect('/')
-        return super().get(request, *args, **kwargs)
-
-    def has_access(self, user):
-        obj = self.get_object()
-        return obj.orgs.filter(pk=user.organizer.pk).exists()
-
-    def post(self, request, *args, **kwargs):
-        if not self.has_access(request.user):
-            return redirect('/')
-        return super().post(request, *args, **kwargs)
+class EventUpdateView(EventFieldsMixin, UpdateView, HasAccessWithOrganizerMixin, HasAccessView):
+    action = 'change'
 
 
 class LoginView(FormView):
