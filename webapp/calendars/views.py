@@ -41,11 +41,19 @@ class EventListView(ListView):
 class HasAccessMixin(object):
 
     def has_access(self, user, action=None):
+        """
+        :param user:
+        :param action:
+        :return [bool, bool] - first bool is condition to access,
+        second is check to a final condition - good to inheritance:
+        """
+
+        print(user.user_permissions.all())
         action = action or self.action
         if user.is_superuser:
             return True, True
 
-        if not user.has_perm('calendars.%s_category' % action):
+        if not user.has_perm('calendars.%s_event' % action):
             return False, True
 
         return True, False
