@@ -7,6 +7,9 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     {% block extra_css %}
     {% endblock %}
+
+    <script src="{% static 'js/vendor/jquery.min.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kalendarz Oświęcim</title>
     {% block media %} {%endblock%}
@@ -63,8 +66,6 @@
         </div>
     </div>
 </footer>
-<script src="{% static 'js/vendor/jquery.min.js' %}"></script>
-<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
 {% block extra_js %}
 {% endblock %}
 </body>

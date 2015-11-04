@@ -43,7 +43,8 @@ INSTALLED_APPS = (
     'calendars',
     'sorl.thumbnail',
     'ckeditor',
-    'widget_tweaks'
+    'widget_tweaks',
+    'datetimewidget',
 )
 
 MIDDLEWARE_CLASSES = (
