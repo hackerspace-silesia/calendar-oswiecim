@@ -1,6 +1,3 @@
-from .models import Event
-
-
 class HasAccessMixin(object):
 
     def has_access(self, user, action=None):
@@ -32,4 +29,5 @@ class HasAccessWithOrganizerMixin(HasAccessMixin):
         if final:
             return has_access, True
 
-        return obj.user.pk == user.pk, False
+        print(obj.user)
+        return obj.user and obj.user.pk == user.pk, False

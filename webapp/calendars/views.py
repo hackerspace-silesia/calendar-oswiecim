@@ -11,6 +11,7 @@ from django.views.generic import ListView
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, FormView, UpdateView
+from django.contrib import messages
 
 from .forms import EventForm, LoginForm
 from .models import Event, Organizer
@@ -40,13 +41,17 @@ class EventListView(ListView):
 
 
 class HasAccessView(object):
+    HAS_ACCESS_ERROR_MSG = 'Nie masz uprawnien do tej strony!'
+
     def get(self, request, *args, **kwargs):
         if not self.has_access(request.user)[0]:
+            messages.error(self.HAS_ACCESS_ERROR_MSG)
             return redirect('/')
         return super().get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         if not self.has_access(request.user)[0]:
+            messages.error(self.HAS_ACCESS_ERROR_MSG)
             return redirect('/')
         return super().post(request, *args, **kwargs)
 
@@ -70,11 +75,13 @@ class EventFieldsMixin(LoginRequiredMixin):
     success_url = '/'
 
 
-class EventCreateView(EventFieldsMixin, CreateView, HasAccessMixin, HasAccessView):
+class EventCreateView(EventFieldsMixin, HasAccessView, CreateView, HasAccessMixin):
     action = 'add'
 
     def post(self, request, *args, **kwargs):
         resp = super().post(request, *args, **kwargs)
+        if not self.has_access(request.user)[0]:
+            return resp
         if self.object is not None:
             try:
                 org = request.user.organizer
@@ -87,7 +94,7 @@ class EventCreateView(EventFieldsMixin, CreateView, HasAccessMixin, HasAccessVie
         return resp
 
 
-class EventUpdateView(EventFieldsMixin, UpdateView, HasAccessWithOrganizerMixin, HasAccessView):
+class EventUpdateView(EventFieldsMixin, HasAccessView, UpdateView, HasAccessWithOrganizerMixin):
     action = 'change'
 
 
