@@ -13,7 +13,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, FormView, UpdateView
 
 from .forms import EventForm, LoginForm
-from .models import Event, Organizer
+from .models import Event
+from .mixins import HasAccessWithOrganizerMixin, HasAccessMixin
 
 
 class HomeView(TemplateView):
@@ -36,41 +37,6 @@ class EventListView(ListView):
             'json', self.object_list,
             fields=('title', 'description', 'start_time', 'end_time'))
         return context
-
-
-class HasAccessMixin(object):
-
-    def has_access(self, user, action=None):
-        """
-        :param user:
-        :param action:
-        :return [bool, bool] - first bool is condition to access,
-        second is check to a final condition - good to inheritance:
-        """
-
-        print(user.user_permissions.all())
-        action = action or self.action
-        if user.is_superuser:
-            return True, True
-
-        if not user.has_perm('calendars.%s_event' % action):
-            return False, True
-
-        return True, False
-
-
-class HasAccessWithOrganizerMixin(HasAccessMixin):
-
-    def has_access(self, user, action=None):
-        obj = self.get_object()
-        has_access, final = super().has_access(user, action)
-        if final:
-            return has_access, True
-
-        try:
-            return obj.orgs.filter(pk=user.organizer.pk).exists(), False
-        except Organizer.DoesNotExist:
-            return False, False
 
 
 class HasAccessView(object):
