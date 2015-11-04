@@ -23,6 +23,6 @@ class EventForm(forms.ModelForm):
             'end_time', 'image', 'place',
         )
         widgets = {
-            'start_time': DateTimeWidget(bootstrap_version=3, options=data_time_options),
-            'end_time': DateTimeWidget(bootstrap_version=3, options=data_time_options),
+            'start_time': DateTimeWidget(bootstrap_version=3, usel10n=True, options=data_time_options),
+            'end_time': DateTimeWidget(bootstrap_version=3, usel10n=True, options=data_time_options),
         }
