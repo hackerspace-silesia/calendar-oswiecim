@@ -13,7 +13,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, FormView, UpdateView
 
 from .forms import EventForm, LoginForm
-from .models import Event
+from .models import Event, Organizer
 from .mixins import HasAccessWithOrganizerMixin, HasAccessMixin
 
 
@@ -76,8 +76,14 @@ class EventCreateView(EventFieldsMixin, CreateView, HasAccessMixin, HasAccessVie
     def post(self, request, *args, **kwargs):
         resp = super().post(request, *args, **kwargs)
         if self.object is not None:
-            org = request.user.organizer
-            self.object.orgs.add(org)
+            try:
+                org = request.user.organizer
+            except Organizer.DoesNotExist:
+                pass
+            else:
+                self.object.orgs.add(org)
+            self.object.user = request.user
+            self.object.save()
         return resp
 
 

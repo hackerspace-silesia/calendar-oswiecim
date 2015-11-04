@@ -11,8 +11,9 @@ class Event(models.Model):
     description = RichTextField(verbose_name="Opis wydarzenia")
     image = models.ImageField(upload_to='event/%Y/%m/%d/', blank=True, null=True, verbose_name="Plakat")
     place = models.CharField(max_length=120, verbose_name="Miejsce")
-    point = models.PointField(blank=True, null=True, verbose_name="Miejsce na mapie")
+    #point = models.PointField(blank=True, null=True, verbose_name="Miejsce na mapie")
     orgs = models.ManyToManyField('Organizer', blank=True, related_name='events', verbose_name="Organizator")
+    user = models.ForeignKey(User, blank=True, null=True, related_name='event', verbose_name='Użytkownik')
 
     category = models.ForeignKey('Category', blank=True, null=True, verbose_name="Kategoria")
 

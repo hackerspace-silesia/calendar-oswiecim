@@ -9,14 +9,13 @@ class LoginForm(forms.Form):
 
 
 class EventForm(forms.ModelForm):
-    point = forms.PointField(widget=forms.OSMWidget(),label="Miejsce na mapie")
 
     class Meta:
         model = Event
         fields = (
             'title', 'description',
             'category', 'start_time',
-            'end_time', 'image', 'place', 'point',
+            'end_time', 'image', 'place',
         )
         widgets = {
             'start_time': widgets.AdminSplitDateTime,
