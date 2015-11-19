@@ -39,7 +39,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis',
     'calendars',
     'sorl.thumbnail',
     'ckeditor',
@@ -82,7 +81,7 @@ WSGI_APPLICATION = 'mayzla.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.config(default='postgis://cal:cal@localhost/cal')}
+DATABASES = {'default': dj_database_url.config(default='postgres://cal:cal@localhost/cal')}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
