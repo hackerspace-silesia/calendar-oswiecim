@@ -1,4 +1,4 @@
-from django.contrib.gis import forms
+from django import forms
 from django.contrib.admin import widgets
 from datetimewidget.widgets import DateTimeWidget
 from .models import Event

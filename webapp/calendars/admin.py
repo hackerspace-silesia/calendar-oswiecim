@@ -1,9 +1,9 @@
-from django.contrib.gis import admin
+from django.contrib import admin
 
 # Register your models here.
 from .models import Event, Organizer, Category
 
-class EventAdmin(admin.OSMGeoAdmin):
+class EventAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'user', 'start_time', 'end_time')
 
 admin.site.register(Event, EventAdmin)
