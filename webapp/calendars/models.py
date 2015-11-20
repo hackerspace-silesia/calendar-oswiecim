@@ -1,7 +1,7 @@
 from ckeditor.fields import RichTextField
-from django.contrib.gis.db import models
+from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.admin import widgets  
+from django.contrib.admin import widgets
 
 
 class Event(models.Model):
@@ -18,7 +18,6 @@ class Event(models.Model):
     category = models.ForeignKey('Category', blank=True, null=True, verbose_name="Kategoria")
 
     url = models.URLField(blank=True, null=True,verbose_name="Adres www")
-    objects = models.GeoManager()
 
     def __str__(self):
         return self.title
