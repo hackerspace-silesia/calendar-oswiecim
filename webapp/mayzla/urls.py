@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^zaloguj/$', LoginView.as_view(), name="login"),
     url(r'^wyloguj/$', logout_view, name="logout"),
     url(r'^ckeditor/', include('ckeditor.urls')),
+    url(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
 ]
 
