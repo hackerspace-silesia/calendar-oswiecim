@@ -6,6 +6,14 @@
             <h1>
                 {{ event.title }}
             </h1>
+            <h5>
+                Kategorie:
+                {% for category in event.categories.all %}
+                    <span class="label label-{{ category.color|default:"primary" }}">
+                        {{ category.name }}
+                    </span>
+                {% endfor %}
+            </h5>
             {% if can_edit %}
                 <a class="btn btn-default" href="{% url 'event_update' pk=event.pk %}">EDYTUJ</a> <br/>
             {% endif %}
@@ -43,10 +51,6 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            {% if event.point %}
-                <div id="map" class="map" data-lat="{{ event.point.x }}" data-lng="{{ event.point.y }}"></div>
-            {% endif %}
-
         </div>
         <div class="col-md-6 poster">
             {% if event.image %}

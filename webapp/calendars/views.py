@@ -12,6 +12,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, FormView, UpdateView
 from django.contrib import messages
+from django.utils import timezone
 
 from .forms import EventForm, LoginForm
 from .models import Event, Organizer
@@ -23,7 +24,10 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        context['events'] = Event.objects.filter(start_time__gte=datetime.datetime.now()).order_by('start_time')[:12]
+        context['events'] = Event.objects.order_by('-start_time')[:12]
+        dt_now = timezone.now()
+        for event in context['events']:
+            event.is_old = event.start_time < dt_now
         return context
 
 

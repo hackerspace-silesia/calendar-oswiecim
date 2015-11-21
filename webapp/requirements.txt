@@ -8,4 +8,5 @@ django-braces==1.8.1
 django-datetime-widget==0.9.3
 dj-database-url
 pytz
-
+django-bootstrap3==6.2.2
+django-grappelli==2.7,2

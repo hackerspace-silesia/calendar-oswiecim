@@ -13,16 +13,24 @@ data_time_options = {
     'format': 'dd-mm-yyyy HH:ii'
 }
 
+def dt_widget():
+    return DateTimeWidget(
+        bootstrap_version=3,
+        usel10n=True,
+        options=data_time_options
+    )
+
+
 class EventForm(forms.ModelForm):
 
     class Meta:
         model = Event
         fields = (
             'title', 'description',
-            'category', 'start_time',
+            'categories', 'start_time',
             'end_time', 'image', 'place',
         )
         widgets = {
-            'start_time': DateTimeWidget(bootstrap_version=3, usel10n=True, options=data_time_options),
-            'end_time': DateTimeWidget(bootstrap_version=3, usel10n=True, options=data_time_options),
+            'start_time': dt_widget(),
+            'end_time': dt_widget(),
         }

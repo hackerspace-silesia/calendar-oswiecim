@@ -1,10 +1,21 @@
 {% load thumbnail staticfiles %}
 <div class="col-xs-12 col-sm-4">
-    <div class="panel {{ event.category.color|default:"panel-primary" }}">
+    <div class="panel panel-primary {% if event.is_old %}disabled{% endif %}">
+        <div class="disabled-background">ZAKOŃCZONE</div>
         <div class="panel-heading">
-            <h3 class="panel-title"><a href="{% url 'event_details' event.id %}">{{ event.title }}</a></h3>
+            <h3 class="panel-title">
+                <a href="{% url 'event_details' event.id %}">{{ event.title }}</a>
+                <div class="event-labels">
+                    {% for category in event.categories.all %}
+                        <span class="label label-{{ category.color|default:"primary" }}">
+                            {{ category.name }}
+                        </span>
+                    {% endfor %}
+                </div>
+            </h3>
         </div>
         <div class="panel-body">
+            <i class="glyphicon glyphicon-calendar"></i> {{ event.start_time|date:"j.m.Y" }}
             {% if event.image %}
                 {% thumbnail event.image "300x100" crop="center" as im %}
                     <img src="{{ im.url }}" class="img-responsive img-rounded event-img">
@@ -12,7 +23,6 @@
             {% else %}
                 <img src="{% static 'img/event.png' %}" class="img-responsive img-rounded event-img">
             {% endif %}
-            <i class="glyphicon glyphicon-calendar"></i> {{ event.start_time|date:"j.m.Y" }}
         </div>
     </div>
 </div>
