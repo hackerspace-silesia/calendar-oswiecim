@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'ckeditor',
     'widget_tweaks',
     'datetimewidget',
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
