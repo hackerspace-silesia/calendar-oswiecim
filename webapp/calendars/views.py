@@ -93,9 +93,19 @@ class EventCreateView(EventFieldsMixin, HasAccessView, CreateView, HasAccessMixi
             self.object.save()
         return resp
 
+    def form_valid(self, form):
+        msg = "Pomyślnie dodano wydarzenie %s" % form.data['title']
+        messages.success(self.request, msg)
+        return super().form_valid(form)
+
 
 class EventUpdateView(EventFieldsMixin, HasAccessView, UpdateView, HasAccessWithOrganizerMixin):
     action = 'change'
+
+    def form_valid(self, form):
+        msg = "Pomyślnie zaaktulizowano wydarzenie %s" % form.data['title']
+        messages.success(self.request, msg)
+        return super().form_valid(form)
 
 
 class LoginView(FormView):
