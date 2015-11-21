@@ -15,7 +15,7 @@ class Event(models.Model):
     orgs = models.ManyToManyField('Organizer', blank=True, related_name='events', verbose_name="Organizator")
     user = models.ForeignKey(User, blank=True, null=True, related_name='event', verbose_name='Użytkownik')
 
-    category = models.ForeignKey('Category', blank=True, null=True, verbose_name="Kategoria")
+    categories = models.ManyToManyField('Category', blank=True, null=True, verbose_name="Kategoria")
 
     url = models.URLField(blank=True, null=True,verbose_name="Adres www")
 
@@ -25,14 +25,14 @@ class Event(models.Model):
 
 class Category(models.Model):
     COLORS = (
-        ('panel-primary', 'Niebieski'),
-        ('panel-success', 'Zielony'),
-        ('panel-info', 'Jasno niebieski'),
-        ('panel-warning', 'Żółty'),
-        ('panel-danger', 'Czerwony'),
+        ('primary', 'Niebieski'),
+        ('success', 'Zielony'),
+        ('info', 'Jasno niebieski'),
+        ('warning', 'Żółty'),
+        ('danger', 'Czerwony'),
     )
     name = models.CharField(max_length=100)
-    color = models.CharField(max_length=16, choices=COLORS, default="panel-primary")
+    color = models.CharField(max_length=16, choices=COLORS, default="primary")
 
     def __str__(self):
         return self.name

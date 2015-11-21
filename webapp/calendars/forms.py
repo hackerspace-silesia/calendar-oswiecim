@@ -27,7 +27,7 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = (
             'title', 'description',
-            'category', 'start_time',
+            'categories', 'start_time',
             'end_time', 'image', 'place',
         )
         widgets = {
