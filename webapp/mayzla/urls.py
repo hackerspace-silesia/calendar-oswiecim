@@ -20,6 +20,7 @@ from django.views.generic import TemplateView
 from calendars.views import HomeView, EventDetailView, EventListView, events_api
 from calendars.views import EventCreateView, EventUpdateView
 from calendars.views import LoginView, logout_view
+from calendars.feed import EventFeed
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name="index"),
@@ -34,6 +35,7 @@ urlpatterns = [
     url(r'^wyloguj/$', logout_view, name="logout"),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^event.ics$', EventFeed(), name='ical'),
 ]
 
 if settings.DEBUG:
