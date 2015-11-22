@@ -17,21 +17,30 @@
             {% if can_edit %}
                 <a class="btn btn-default" href="{% url 'event_update' pk=event.pk %}">EDYTUJ</a> <br/>
             {% endif %}
-            Start wydarzenia:
-            <div class="alert alert-success event-time">
-                {{ event.start_time }}
+            {% if event.place %}
+                <h3 title="Miejsce wydarzenia"><span class="glyphicon glyphicon-home"></span> {{ event.place }}</h3>
+            {% endif %}
+            <div class="panel panel-default">
+                <div class="panel-heading">Rozpoczęcie</div>
+                <div class="panel-body event-time">
+                    <span class="glyphicon glyphicon-calendar"></span> {{ event.start_time }}
+                </div>
             </div>
             {% if event.end_time %}
-                Koniec wydarzenia:
-                <div class="alert alert-success event-time">
-                    {{ event.end_time }}
+            <div class="panel panel-default">
+                <div class="panel-heading">Zakończenie</div>
+                <div class="panel-body event-time">
+                    <span class="glyphicon glyphicon-calendar"></span> {{ event.end_time }}
                 </div>
+            </div>
             {% endif %}
             {% autoescape off %}
+            <div class="description text-justify lead">
                 {{ event.description }}
+            </div>
             {% endautoescape %}
             {% if event.url %}
-                <h3><i class="glyphicon glyphicon-globe"></i><a href="{{ event.url }}"> {{ event.url }} </a></h3>
+                <h3><i class="glyphicon glyphicon-globe"></i> <a href="{{ event.url }}">{{ event.url }}</a></h3>
             {% endif %}
             {% if event.orgs.exists %}
                 <h3>
