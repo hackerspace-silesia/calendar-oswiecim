@@ -40,6 +40,8 @@
           right: 'month,basicWeek,basicDay'
         },
         defaultDate: currentDate,
+        timezone: 'local',
+        timeFormat: 'H:mm',
         editable: true,
         eventLimit: true,
         eventClick: function(eventObj) {
