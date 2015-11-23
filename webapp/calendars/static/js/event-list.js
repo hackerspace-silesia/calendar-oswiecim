@@ -51,8 +51,6 @@
           updateCalendar(view.intervalStart);
         }
       });
-      cache[cacheKey] = mapCalendarData(window.TODAY_DATA);
-      calendar.fullCalendar('addEventSource', cache[cacheKey]);
     }
     initCalendar();
   });
