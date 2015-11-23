@@ -35,14 +35,14 @@
       var cacheKey = currentDate.format('MM-YYYY');
       calendar.fullCalendar({
         header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'month,basicWeek,basicDay'
+          left: 'today',
+          center: 'prev, title, next',
+          right: 'month, basicWeek, agendaDay'
         },
         defaultDate: currentDate,
         timezone: 'local',
         timeFormat: 'H:mm',
-        editable: true,
+        editable: false,
         eventLimit: true,
         eventClick: function(eventObj) {
           document.location = window.location + eventObj._id;
