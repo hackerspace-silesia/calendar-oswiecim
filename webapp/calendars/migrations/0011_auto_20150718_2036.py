@@ -65,7 +65,6 @@ def load_events(cls, data):
     else:
         dts.append(dts[0])
 
-    print(data['old_eid'])
     cls.objects.create(
         title=data['tytuł'],
         place=data.get('miejsce') or '',

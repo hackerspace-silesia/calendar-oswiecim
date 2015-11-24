@@ -13,6 +13,12 @@ django-ckeditor==4.5.0
 django-braces==1.8.1
 ```
 
+###### import starych danych
+
+```
+python manage.py import_data SCIEZKA
+```
+
 ###### Pillow
 Do kompilacji wymagane są pliki nagłówkowe Pythona. W openSUSE te pliki znajdziemy w pakiecie `python3-devel`.
 Obsługa poszczególnych formatów graficznych jest uzależniona od dodatkowych bibliotek. 
