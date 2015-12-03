@@ -6,11 +6,15 @@
 
     function mapCalendarData(data) {
       return $.map(data, function(item){
+        var on = moment.parseZone(item.fields.start_time); // start moment
+        var off = moment.parseZone(item.fields.end_time); // stop moment
+        var diff = moment.duration(moment(off).diff(on)); // event duration
         return {
           title: item.fields.title,
           end: item.fields.end_time,
           start: item.fields.start_time,
-          id: item.pk
+          id: item.pk,
+          allDay: diff.asHours() > 23 ? true : false // if > 23 assume it's allDay event
         };
       });
     }
@@ -35,14 +39,14 @@
       var cacheKey = currentDate.format('MM-YYYY');
       calendar.fullCalendar({
         header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'month,basicWeek,basicDay'
+          left: 'today',
+          center: 'prev, title, next',
+          right: 'month, basicWeek, agendaDay'
         },
         defaultDate: currentDate,
         timezone: 'local',
         timeFormat: 'H:mm',
-        editable: true,
+        editable: false,
         eventLimit: true,
         eventClick: function(eventObj) {
           document.location = window.location + eventObj._id;
@@ -51,8 +55,6 @@
           updateCalendar(view.intervalStart);
         }
       });
-      cache[cacheKey] = mapCalendarData(window.TODAY_DATA);
-      calendar.fullCalendar('addEventSource', cache[cacheKey]);
     }
     initCalendar();
   });
