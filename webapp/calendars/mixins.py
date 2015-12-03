@@ -29,5 +29,4 @@ class HasAccessWithOrganizerMixin(HasAccessMixin):
         if final:
             return has_access, True
 
-        print(obj.user)
         return obj.user and obj.user.pk == user.pk, False
