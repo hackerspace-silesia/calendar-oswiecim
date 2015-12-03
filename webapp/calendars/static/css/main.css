@@ -90,3 +90,8 @@ body {
     font-size: 18pt;
     font-weight: bold;
 }
+
+/* Show cursor:pointer for events (when events are not editable) */
+a.fc-event {
+    cursor: pointer;
+}
