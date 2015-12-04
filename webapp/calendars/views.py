@@ -29,7 +29,7 @@ class HomeView(TemplateView):
         past_events = Event.objects.filter(start_time__lt=datetime.datetime.now()).order_by('-start_time')[:12 - future_events.count()]
         dt_now = timezone.now()
         for event in past_events:
-            event.is_old = event.start_time < dt_now
+            event.is_old = event.end_time < dt_now
         context['events'] = list(chain(future_events, past_events))
         return context
 
