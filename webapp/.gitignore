@@ -1,2 +1,4 @@
 media
 db.sqlite3
+# don't pull local settings into vcs
+mayzla/*_settings.py
