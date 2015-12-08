@@ -92,6 +92,41 @@ body {
 }
 
 /* Show cursor:pointer for events (when events are not editable) */
-a.fc-event {
+.fc-event, a.fc-event {
     cursor: pointer;
+    color: #555 !important;
+}
+.fc-event, a.fc-event :hover {
+    color: #333 !important;
+}
+
+/* Change background for fc-today */
+.fc-today {
+    background-color: rgba(39, 128, 227, 0.12) !important;
+}
+
+/* Don't user background and border for events in basic view */
+.fc-basic-view a.fc-event {
+    background: none;
+    border: none;
+}
+
+/* Don't highlight day in agendaDay view - only one day visible at the time */
+.fc-agendaDay-view .fc-today {
+    background: none !important;
+}
+.fc-agendaDay-view a.fc-event {
+    background-color: #a4c0e4;
+    border: 1px solid #1a6ecc;
+}
+.fc-agendaDay-view .fc-time-grid-event, .fc-agendaDay-view div.fc-time {
+    font-size: 10pt;
+}
+.fc-basic-view a.fc-event {
+    font-size: 10pt;
+}
+
+/* Hide events when not from current month/week */
+.fc-past a, .fc-future a {
+    display: none !important;
 }
