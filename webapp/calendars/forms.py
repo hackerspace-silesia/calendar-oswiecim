@@ -26,9 +26,10 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = (
-            'title', 'description',
-            'categories', 'start_time',
-            'end_time', 'image', 'place',
+            'title', 'place',
+            'description', 'categories',
+            'start_time', 'end_time',
+            'image', 'url',
         )
         widgets = {
             'start_time': dt_widget(),
