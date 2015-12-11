@@ -63,20 +63,21 @@ body {
 }
 
 .label {
-    margin-right: 6px;
+    margin-left: 6px;
     border-radius: 7px;
 }
 
 .event-labels {
     text-align: right;
-    width: 60%;
+    white-space: nowrap; /* don't break line  */
     float: right;
 }
 
 .event-labels .label {
     border: 2px solid white;
     padding: 2px;
-    font-size: 6pt;
+    font-size: 7pt;
+    font-weight: 400;
 }
 
 .panel.disabled {
