@@ -41,8 +41,18 @@ body {
     width: 100%;
 }
 
-.event-time {
-    font-size: 22px;
+.schedule .panel-heading {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.schedule-begin {
+    padding-right: 0;
+}
+.schedule-end {
+    padding-left: 0;
+}
+.schedule-end .panel {
+    border-left: 0;
 }
 
 .poster img {

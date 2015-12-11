@@ -6,6 +6,7 @@
             <h1>
                 {{ event.title }}
             </h1>
+            {% if event.categories.count > 0 %}
             <h5>
                 Kategorie:
                 {% for category in event.categories.all %}
@@ -14,33 +15,40 @@
                     </span>
                 {% endfor %}
             </h5>
+            {% endif %}
             {% if can_edit %}
                 <a class="btn btn-default" href="{% url 'event_update' pk=event.pk %}">EDYTUJ</a> <br/>
             {% endif %}
             {% if event.place %}
-                <h3 title="Miejsce wydarzenia"><span class="glyphicon glyphicon-home"></span> {{ event.place }}</h3>
+                <h3 title="Miejsce wydarzenia"><span class="glyphicon glyphicon-map-marker"></span> {{ event.place }}</h3>
             {% endif %}
-            <div class="panel panel-default">
-                <div class="panel-heading">Rozpoczęcie</div>
-                <div class="panel-body event-time">
-                    <span class="glyphicon glyphicon-calendar"></span> {{ event.start_time }}
+            <div class="row">
+                <div class="col col-md-6 schedule schedule-begin">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Rozpoczęcie</div>
+                        <div class="panel-body event-time">
+                            <span class="glyphicon glyphicon-calendar"></span> {{ event.start_time }}
+                        </div>
+                    </div>
                 </div>
-            </div>
-            {% if event.end_time %}
-            <div class="panel panel-default">
-                <div class="panel-heading">Zakończenie</div>
-                <div class="panel-body event-time">
-                    <span class="glyphicon glyphicon-calendar"></span> {{ event.end_time }}
+                {% if event.end_time %}
+                <div class="col col-md-6 schedule schedule-end">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Zakończenie</div>
+                        <div class="panel-body event-time">
+                            <span class="glyphicon glyphicon-calendar"></span> {{ event.end_time }}
+                        </div>
+                    </div>
                 </div>
+                {% endif %}
             </div>
-            {% endif %}
             {% autoescape off %}
             <div class="description text-justify lead">
                 {{ event.description }}
             </div>
             {% endautoescape %}
             {% if event.url %}
-                <h3><i class="glyphicon glyphicon-globe"></i> <a href="{{ event.url }}">{{ event.url }}</a></h3>
+                <h3><i class="glyphicon glyphicon-globe"></i> <a href="{{ event.url }}" target="_blank">{{ event.url }}</a></h3>
             {% endif %}
             {% if event.orgs.exists %}
                 <h3>
