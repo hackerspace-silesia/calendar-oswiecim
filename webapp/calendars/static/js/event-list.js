@@ -43,6 +43,12 @@
           center: 'prev, title, next',
           right: 'month, basicWeek, agendaDay'
         },
+        views: {
+            agenda: {
+                minTime: '06:00:00',
+                maxTime: '22:00:00',
+            },
+        },
         defaultDate: currentDate,
         timezone: 'local',
         timeFormat: 'H:mm',
