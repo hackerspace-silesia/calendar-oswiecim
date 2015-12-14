@@ -117,6 +117,15 @@ img.event-img {
     color: #333 !important;
 }
 
+/* use the same colors for fc-more link as event itself */
+a.fc-more {
+    color: #555;
+}
+a.fc-more:hover {
+    text-decoration: none !important;
+    color: #333;
+}
+
 /* Change background for fc-today */
 .fc-today {
     background-color: rgba(39, 128, 227, 0.12) !important;
@@ -134,7 +143,7 @@ img.event-img {
 }
 .fc-agendaDay-view a.fc-event {
     background-color: #a4c0e4;
-    border: 1px solid #1a6ecc;
+    border: 1px solid #5f748c;
 }
 .fc-agendaDay-view .fc-time-grid-event, .fc-agendaDay-view div.fc-time {
     font-size: 10pt;
@@ -146,4 +155,10 @@ img.event-img {
 /* Hide events when not from current month/week */
 .fc-past a, .fc-future a {
     display: none !important;
+}
+
+/* multiday events */
+.fc-basic-view a.fc-not-start, .fc-basic-view a.fc-not-end {
+    background-color: #a4c0e4;
+    border: 1px solid #5f748c;
 }
