@@ -9,15 +9,15 @@ class LoginForm(forms.Form):
     password = forms.CharField(label='Hasło', widget=forms.PasswordInput())
 
 
-data_time_options = {
-    'format': 'dd-mm-yyyy HH:ii'
+date_time_options = {
+    'format': 'dd.mm.yyyy HH:ii',
+    'language': 'pl'
 }
 
 def dt_widget():
     return DateTimeWidget(
         bootstrap_version=3,
-        usel10n=True,
-        options=data_time_options
+        options=date_time_options
     )
 
 
