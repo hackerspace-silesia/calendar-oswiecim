@@ -108,6 +108,14 @@ img.event-img {
     font-weight: bold;
 }
 
+/* display ckeditor as block and in full width */
+.django-ckeditor-widget {
+  display: block !important;
+}
+#cke_id_description {
+  width: 100% !important;
+}
+
 /* Show cursor:pointer for events (when events are not editable) */
 .fc-event, a.fc-event {
     cursor: pointer;
