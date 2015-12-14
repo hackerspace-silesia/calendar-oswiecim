@@ -3,7 +3,7 @@
 {% block content %}
     <div class="row">
         <div class="col-md-6">
-            <h1>
+            <h1 class="event-title">
                 {{ event.title }}
             </h1>
             {% if event.categories.count > 0 %}
@@ -20,7 +20,7 @@
                 <a class="btn btn-default" href="{% url 'event_update' pk=event.pk %}">EDYTUJ</a> <br/>
             {% endif %}
             {% if event.place %}
-                <h3 title="Miejsce wydarzenia"><span class="glyphicon glyphicon-map-marker"></span> {{ event.place }}</h3>
+                <h4 title="Miejsce wydarzenia"><span class="glyphicon glyphicon-map-marker"></span> {{ event.place }}</h4>
             {% endif %}
             <div class="row">
                 <div class="col col-md-6 schedule schedule-begin">
@@ -43,7 +43,7 @@
                 {% endif %}
             </div>
             {% autoescape off %}
-            <div class="description text-justify lead">
+            <div class="description text-justify">
                 {{ event.description }}
             </div>
             {% endautoescape %}
