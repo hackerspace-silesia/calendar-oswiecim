@@ -4,15 +4,17 @@
 
 {% block content %}
     <div class="row">
-        <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            {% buttons %}
-                <button type="submit" class='btn btn-primary'>
-                    {% bootstrap_icon "star" %} Zapisz
-                </button>
-            {% endbuttons %}
-        </form>
+        <div class="col-md-8 col-md-offset-2">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class='btn btn-primary'>
+                        {% bootstrap_icon "star" %} Zapisz
+                    </button>
+                {% endbuttons %}
+            </form>
+        </div>
     </div>
 {% endblock %}
 
