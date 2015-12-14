@@ -28,6 +28,14 @@ body {
 /* Sticky footer styles end
 -------------------------------------------------- */
 
+body {
+    font-size: 16px;
+}
+
+.navbar {
+    font-size: 15px;
+}
+
 .intro {
     background-color: #f5f5f5;
     text-align: center;
@@ -42,9 +50,8 @@ img.event-img {
     padding: 5px;
 }
 
-.map {
-    height: 400px;
-    width: 100%;
+.event-title {
+    margin-bottom: 30px;
 }
 
 .schedule .panel-heading {
@@ -110,10 +117,10 @@ img.event-img {
 
 /* display ckeditor as block and in full width */
 .django-ckeditor-widget {
-  display: block !important;
+    display: block !important;
 }
 #cke_id_description {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 /* Show cursor:pointer for events (when events are not editable) */
