@@ -28,8 +28,14 @@ body {
 /* Sticky footer styles end
 -------------------------------------------------- */
 
-.event-img {
-    margin-bottom: 10px;
+.intro {
+    background-color: #f5f5f5;
+    text-align: center;
+    margin-bottom: 21px;
+}
+
+img.event-img {
+    width: 100%;
 }
 
 .form-signin {
