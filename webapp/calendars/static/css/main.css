@@ -32,7 +32,7 @@ body {
     font-size: 16px;
 }
 
-.navbar {
+.navbar, #calendar {
     font-size: 15px;
 }
 
@@ -58,14 +58,18 @@ img.event-img {
     padding-top: 5px;
     padding-bottom: 5px;
 }
-.schedule-begin {
-    padding-right: 0;
-}
-.schedule-end {
-    padding-left: 0;
-}
-.schedule-end .panel {
-    border-left: 0;
+
+/* Medium Devices, Desktops only */
+@media only screen and (min-width : 992px) {
+    .schedule-begin {
+        padding-right: 0;
+    }
+    .schedule-end {
+        padding-left: 0;
+    }
+    .schedule-end .panel {
+        border-left: 0;
+    }
 }
 
 .poster img {

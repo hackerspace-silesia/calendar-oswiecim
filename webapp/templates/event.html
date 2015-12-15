@@ -48,13 +48,13 @@
             </div>
             {% endautoescape %}
             {% if event.url %}
-                <h3><i class="glyphicon glyphicon-globe"></i> <a href="{{ event.url }}" target="_blank">{{ event.url }}</a></h3>
+                <h4><i class="glyphicon glyphicon-globe"></i> <a href="{{ event.url }}" target="_blank">{{ event.url }}</a></h4>
             {% endif %}
             {% if event.orgs.exists %}
-                <h3>
+                <h4>
                     <i class="glyphicon glyphicon-user"></i>
                     Organizatorzy
-                </h3>
+                </h4>
                 <ul>
                     {% for org in event.orgs.all %}
                         <li>
