@@ -1,9 +1,9 @@
-django==1.8.3
-pillow==2.9.0
+django==1.8.8
+pillow==3.1.0
 psycopg2==2.6.1
 sorl-thumbnail==12.3
 django-widget-tweaks==1.4.1
-django-ckeditor==4.5.0
+django-ckeditor==4.5.1
 django-braces==1.8.1
 django-datetime-widget==0.9.3
 -e hg+https://bitbucket.org/bennylope/django-ical@f78cf6e9e34c8b273b7de35cc655ca60b1c22ce4#egg=django-ical
