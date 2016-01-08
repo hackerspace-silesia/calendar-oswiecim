@@ -18,13 +18,6 @@ body {
     height: 60px;
     /*background-color: #666;*/
 }
-
-.center {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    height:20px;
-}
 /* Sticky footer styles end
 -------------------------------------------------- */
 
@@ -34,6 +27,24 @@ body {
 
 .navbar, #calendar {
     font-size: 15px;
+}
+
+.footer {
+    background-color: #e1e1e1;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.footer .text-muted {
+    font-size: 14px;
+    margin: 20px 0px;
+}
+
+.credit a:hover {
+    color: #666;
 }
 
 .intro {
