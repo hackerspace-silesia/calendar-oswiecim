@@ -61,9 +61,12 @@
 </div>
 <footer class="footer">
     <div class="container">
-        <div class="row center">
-            <a href="https://github.com/hackerspace-silesia/calendar-oswiecim"><img class="license" src="{% static 'img/AGPLv3_Logo-24.png' %}"></a>
-        </div>
+        <p class="text-muted credit">
+            {% now "Y" %} |
+            <a href="http://hs-silesia.pl" target="_blank">Hackerspace Silesia</a> /
+            <a href="http://mbp-oswiecim.pl" target="_blank">MBP Oświęcim</a> | licencja
+            <a href="https://github.com/hackerspace-silesia/calendar-oswiecim" target="_blank">AGPL-3.0</a>
+        </p>
     </div>
 </footer>
 {% block extra_js %}
