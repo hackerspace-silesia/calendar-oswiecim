@@ -10,7 +10,7 @@ class LoginForm(forms.Form):
 
 
 date_time_options = {
-    'format': 'dd.mm.yyyy HH:ii',
+    'format': 'dd.mm.yyyy hh:ii',
     'language': 'pl'
 }
 
