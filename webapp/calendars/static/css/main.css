@@ -138,6 +138,10 @@ img.event-img {
 	font-weight: bold;
 }
 
+.about-us img {
+    margin: 0 auto;
+}
+
 /* display ckeditor as block and in full width */
 .django-ckeditor-widget {
 	display: block !important;
