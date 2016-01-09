@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'datetimewidget',
     'bootstrap3',
+    'compressor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -83,7 +84,8 @@ WSGI_APPLICATION = 'mayzla.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.config(default='postgres://cal:cal@localhost/cal')}
+# DATABASES = {'default': dj_database_url.config(default='postgres://cal:cal@localhost/cal')}
+DATABASES = {'default': dj_database_url.config(default='sqlite:///db.sqlite3')}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -105,6 +107,12 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
