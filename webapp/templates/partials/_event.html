@@ -14,6 +14,7 @@
                 </div>
             </h3>
         </div>
+        <a href="{% url 'event_details' event.id %}">
         <div class="panel-body">
             <i class="glyphicon glyphicon-calendar"></i> {{ event.start_time|date:"j.m.Y" }}
             {% if event.image %}
@@ -24,5 +25,6 @@
                 <img src="{% static 'img/event.png' %}" class="img-responsive img-rounded event-img">
             {% endif %}
         </div>
+        </a>
     </div>
 </div>

@@ -14,6 +14,7 @@ date_time_options = {
     'language': 'pl'
 }
 
+
 def dt_widget():
     return DateTimeWidget(
         bootstrap_version=3,

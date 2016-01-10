@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load compress %}
 {% load staticfiles %}
 
 {% block content %}
@@ -8,9 +9,14 @@
         <a href="{% url 'ical' %}">tutaj</a>
     </div>
 {% endblock %}
+
+{% compress css %}
 {% block extra_css %}
     <link href="{% static 'css/fullcalendar.min.css' %}" rel="stylesheet">
 {% endblock %}
+{% endcompress %}
+
+{% compress js %}
 {% block extra_js %}
     <script type="text/javascript">
       window.TODAY_DATA = {{ events_as_json | safe}};
@@ -20,3 +26,4 @@
     <script type="text/javascript" src="{% static 'js/vendor/fullcalendar/lang/pl.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/event-list.js' %}"></script>
 {% endblock %}
+{% endcompress %}
