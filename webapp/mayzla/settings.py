@@ -46,7 +46,6 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'datetimewidget',
     'bootstrap3',
-    'compressor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,16 +104,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-)
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CKEDITOR_CONFIGS = {
     'default': {
