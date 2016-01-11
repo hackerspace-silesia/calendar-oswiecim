@@ -1,194 +1,202 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-    position: relative;
-    min-height: 100%;
+	position: relative;
+	min-height: 100%;
 }
 
 body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    /*background-color: #666;*/
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	/*background-color: #666;*/
 }
 /* Sticky footer styles end
 -------------------------------------------------- */
 
 body {
-    font-size: 16px;
+	font-size: 16px;
 }
 
 .navbar, #calendar {
-    font-size: 15px;
+	font-size: 15px;
 }
 
 .footer {
-    background-color: #e1e1e1;
+	background-color: #e1e1e1;
 }
 
 .footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+	padding-right: 15px;
+	padding-left: 15px;
 }
 
 .footer .text-muted {
-    font-size: 14px;
-    margin: 20px 0px;
+	font-size: 14px;
+	margin: 20px 0px;
 }
 
 .credit a:hover {
-    color: #666;
+	color: #666;
 }
 
 .intro {
-    background-color: #f5f5f5;
-    text-align: center;
-    margin-bottom: 21px;
+	background-color: #f5f5f5;
+	text-align: center;
+	margin-bottom: 21px;
+}
+
+.link-to-event {
+	color: #333;
+}
+a.link-to-event:hover, a.link-to-event:active {
+	color: #333;
+	text-decoration: none;
 }
 
 img.event-img {
-    width: 100%;
+	width: 100%;
 }
 
 .form-signin {
-    padding: 5px;
+	padding: 5px;
 }
 
 .event-title {
-    margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 .schedule .panel-heading {
-    padding-top: 5px;
-    padding-bottom: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 /* Medium Devices, Desktops only */
 @media only screen and (min-width : 992px) {
-    .schedule-begin {
-        padding-right: 0;
-    }
-    .schedule-end {
-        padding-left: 0;
-    }
-    .schedule-end .panel {
-        border-left: 0;
-    }
+	.schedule-begin {
+		padding-right: 0;
+	}
+	.schedule-end {
+		padding-left: 0;
+	}
+	.schedule-end .panel {
+		border-left: 0;
+	}
 }
 
 .poster img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100%;
 }
 
 .label {
-    margin-left: 6px;
-    border-radius: 7px;
+	margin-left: 6px;
+	border-radius: 7px;
 }
 
 .event-labels {
-    text-align: right;
-    white-space: nowrap; /* don't break line  */
-    float: right;
+	text-align: right;
+	white-space: nowrap; /* don't break line  */
+	float: right;
 }
 
 .event-labels .label {
-    border: 2px solid white;
-    padding: 2px;
-    font-size: 7pt;
-    font-weight: 400;
+	border: 2px solid white;
+	padding: 2px;
+	font-size: 7pt;
+	font-weight: 400;
 }
 
 .panel.disabled {
-    position: relative;
+	position: relative;
 }
 .disabled-background {
-    z-index: -1;
-    display: none;
-    position: absolute;
+	z-index: -1;
+	display: none;
+	position: absolute;
 }
 
 .panel.disabled .disabled-background {
-    display: block;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(64, 64, 64, 0.5);
-    color: white;
-    text-align: center;
-    line-height: 100px;
-    font-size: 18pt;
-    font-weight: bold;
+	display: block;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(64, 64, 64, 0.5);
+	color: white;
+	text-align: center;
+	line-height: 100px;
+	font-size: 18pt;
+	font-weight: bold;
 }
 
 /* display ckeditor as block and in full width */
 .django-ckeditor-widget {
-    display: block !important;
+	display: block !important;
 }
 #cke_id_description {
-    width: 100% !important;
+	width: 100% !important;
 }
 
 /* Show cursor:pointer for events (when events are not editable) */
 .fc-event, a.fc-event {
-    cursor: pointer;
-    color: #555 !important;
+	cursor: pointer;
+	color: #555 !important;
 }
 .fc-event, a.fc-event :hover {
-    color: #333 !important;
+	color: #333 !important;
 }
 
 /* use the same colors for fc-more link as event itself */
 a.fc-more {
-    color: #555;
+	color: #555;
 }
 a.fc-more:hover {
-    text-decoration: none !important;
-    color: #333;
+	text-decoration: none !important;
+	color: #333;
 }
 
 /* Change background for fc-today */
 .fc-today {
-    background-color: rgba(39, 128, 227, 0.12) !important;
+	background-color: rgba(39, 128, 227, 0.12) !important;
 }
 
 /* Don't user background and border for events in basic view */
 .fc-basic-view a.fc-event {
-    background: none;
-    border: none;
+	background: none;
+	border: none;
 }
 
 /* Don't highlight day in agendaDay view - only one day visible at the time */
 .fc-agendaDay-view .fc-today {
-    background: none !important;
+	background: none !important;
 }
 .fc-agendaDay-view a.fc-event {
-    background-color: #a4c0e4;
-    border: 1px solid #5f748c;
+	background-color: #a4c0e4;
+	border: 1px solid #5f748c;
 }
 .fc-agendaDay-view .fc-time-grid-event, .fc-agendaDay-view div.fc-time {
-    font-size: 10pt;
+	font-size: 10pt;
 }
 .fc-basic-view a.fc-event {
-    font-size: 10pt;
+	font-size: 10pt;
 }
 
 /* Hide events when not from current month/week */
 .fc-past a, .fc-future a {
-    display: none !important;
+	display: none !important;
 }
 
 /* multiday events */
 .fc-basic-view a.fc-not-start, .fc-basic-view a.fc-not-end {
-    background-color: #a4c0e4;
-    border: 1px solid #5f748c;
+	background-color: #a4c0e4;
+	border: 1px solid #5f748c;
 }

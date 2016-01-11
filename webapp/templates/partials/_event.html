@@ -14,7 +14,7 @@
                 </div>
             </h3>
         </div>
-        <a href="{% url 'event_details' event.id %}">
+        <a class="link-to-event" href="{% url 'event_details' event.id %}">
         <div class="panel-body">
             <i class="glyphicon glyphicon-calendar"></i> {{ event.start_time|date:"j.m.Y" }}
             {% if event.image %}
