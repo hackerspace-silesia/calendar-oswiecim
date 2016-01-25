@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'datetimewidget',
     'bootstrap3',
+    'maintenancemode',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,6 +58,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'maintenancemode.middleware.MaintenanceModeMiddleware',
 )
 
 ROOT_URLCONF = 'mayzla.urls'
@@ -125,3 +127,9 @@ MESSAGE_TAGS = {
 }
 
 THUMBNAIL_PRESERVE_FORMAT=True
+
+# Sequence of URL path regexes to exclude from the maintenance mode.
+# Default: ()
+MAINTENANCE_IGNORE_URLS = (
+    r'^/event.ics$',
+)
