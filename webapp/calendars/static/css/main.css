@@ -204,3 +204,8 @@ a.fc-more:hover {
 	background-color: #a4c0e4;
 	border: 1px solid #5f748c;
 }
+
+/* custom error pages */
+.error-template {
+	text-align: center;
+}
