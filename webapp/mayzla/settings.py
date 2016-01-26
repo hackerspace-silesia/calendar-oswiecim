@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'datetimewidget',
     'bootstrap3',
+    'dbbackup',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -125,3 +126,9 @@ MESSAGE_TAGS = {
 }
 
 THUMBNAIL_PRESERVE_FORMAT=True
+
+# dbbackup settings
+# DON'T FORGET TO SET CORRECT BACKUP LOCATION
+DBBACKUP_STORAGE_OPTIONS = {
+    'location': 'change-me-to-proper-dir-for-backups',
+}

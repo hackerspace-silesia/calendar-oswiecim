@@ -11,3 +11,4 @@ dj-database-url
 pytz
 django-bootstrap3==6.2.2
 django-grappelli==2.7.2
+django-dbbackup==2.4.1
