@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
     <article class="about-us text-justify">
         <div class="col-md-6">
@@ -10,7 +11,7 @@
             <p>Moduł kalendarza powstał podczas hackatonu organizowanego przez <a href="http://kodujdlapolski.pl/" target="_blank">Koduj dla Polski</a> i <a href="https://hs-silesia.pl/" target="_blank">Stowarzyszenie Hackerspace Silesia</a>. Dziękujemy wszystkim, którzy poświęcili swój czas na jego tworzenie i dostosowywanie.</p>
         </div>
         <div class="col-md-6">
-            <img src="https://placekitten.com/g/400/450" class="img-responsive img-circle">
+            <img src="{% static 'img/desk.jpg' %}" class="img-responsive img-circle">
         </div>
     </article>
 {% endblock %}
