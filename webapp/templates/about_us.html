@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
     <article class="about-us text-justify">
         <div class="col-md-6">
@@ -7,9 +8,10 @@
             <p>Dzięki temu kalendarzowi, każdy chętny użytkownik będzie mógł pełniej i lepiej korzystać z oferty wydarzeń jaka funkcjonuje w naszym mieście, a każdy, kto wydarzenia organizuje - będzie je mógł promować i docierać z informacją do szerokiego grona odbiorców.</p>
             <p>Wszystko co dzieje się w mieście - teraz może być dostępne na jednej stronie - zapraszamy do korzystania i współtworzenia.</p>
             <p>Jeśli jesteś organizatorem wydarzenia i chciałbyś je umieścić w kalendarzu - napisz do nas - <a href="mailto:kalendarz@oiloswiecim.pl">kalendarz@oiloswiecim.pl</a>.</p>
+            <p>Moduł kalendarza powstał podczas hackatonu organizowanego przez <a href="http://kodujdlapolski.pl/" target="_blank">Koduj dla Polski</a> i <a href="https://hs-silesia.pl/" target="_blank">Stowarzyszenie Hackerspace Silesia</a>. Dziękujemy wszystkim, którzy poświęcili swój czas na jego tworzenie i dostosowywanie.</p>
         </div>
         <div class="col-md-6">
-            <img src="https://placekitten.com/g/400/450" class="img-responsive img-circle">
+            <img src="{% static 'img/desk.jpg' %}" class="img-responsive img-circle">
         </div>
     </article>
 {% endblock %}
