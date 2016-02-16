@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block content %}
     <div class="col-xs-12">
-        <div class="jumbotron intro">
-            <h1>Oświęcimski Kalendarz Wydarzeń</h1>
+        <div class="intro">
+            <img src="{% static 'img/osw.jpg' %}" class="img-responsive">
         </div>
         {% include 'partials/_event_list.html' %}
     </div>
