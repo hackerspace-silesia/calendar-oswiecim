@@ -8,13 +8,16 @@
       return $.map(data, function(item){
         var on = moment.parseZone(item.fields.start_time); // start moment
         var off = moment.parseZone(item.fields.end_time); // stop moment
-        var diff = moment.duration(moment(off).diff(on)); // event duration
+        var diff = moment.duration(moment(off).diff(on)).asHours(); // event duration
+        var cls = '';
+
         return {
           title: item.fields.title,
-          end: item.fields.end_time,
-          start: item.fields.start_time,
+          start: on,
+          end: diff > 23 ? off.add(24, 'h')  : off, // add one day, see: https://code.google.com/p/fullcalendar/issues/detail?id=689
           id: item.pk,
-          allDay: diff.asHours() > 23 ? true : false // if > 23 assume it's allDay event
+          allDay: diff > 23 ? true : false, // if > 23 assume it's allDay event
+          className: diff > 23 ? 'fc-allday' : '', // add class when allDay event
         };
       });
     }
@@ -54,6 +57,7 @@
         timeFormat: 'H:mm',
         editable: false,
         eventLimit: true,
+        nextDayThreshold: '00:00:00',
         eventClick: function(eventObj) {
           document.location = window.location + eventObj._id;
         },
