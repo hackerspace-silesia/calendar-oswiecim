@@ -207,3 +207,7 @@ a.fc-more:hover {
 	background-color: #a4c0e4;
 	border: 1px solid #5f748c;
 }
+.fc-allday {
+	background-color: #a4c0e4 !important;
+	border: 1px solid #5f748c !important;
+}
