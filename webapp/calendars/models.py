@@ -1,6 +1,7 @@
 from ckeditor.fields import RichTextField
 from django.db import models
 from django.contrib.auth.models import User
+from osm_field.fields import LatitudeField, LongitudeField, OSMField
 
 
 class Event(models.Model):
@@ -13,10 +14,12 @@ class Event(models.Model):
     #point = models.PointField(blank=True, null=True, verbose_name="Miejsce na mapie")
     orgs = models.ManyToManyField('Organizer', blank=True, related_name='events', verbose_name="Organizator")
     user = models.ForeignKey(User, blank=True, null=True, related_name='event', verbose_name='Użytkownik')
-
     categories = models.ManyToManyField('Category', blank=True, null=True, verbose_name="Kategoria")
+    url = models.URLField(blank=True, null=True, verbose_name="Adres www")
 
-    url = models.URLField(blank=True, null=True,verbose_name="Adres www")
+    location = OSMField(verbose_name="Położenie na mapie", lat_field='latitude', lon_field='longitude')
+    latitude = LatitudeField(default=50.038, verbose_name="Długość geograficzna")
+    longitude = LongitudeField(default=19.221, verbose_name="Szerokość geograficzna")
 
     def __str__(self):
         return self.title

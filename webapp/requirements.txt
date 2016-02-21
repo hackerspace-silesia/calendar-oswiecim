@@ -10,5 +10,5 @@ django-datetime-widget==0.9.3
 dj-database-url
 pytz
 django-bootstrap3==6.2.2
-django-grappelli==2.7.2
 django-dbbackup==2.4.1
+django-osm-field==0.2.0
