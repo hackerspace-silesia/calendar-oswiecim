@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +46,7 @@ INSTALLED_APPS = (
     'datetimewidget',
     'bootstrap3',
     'dbbackup',
+    'osm_field',
 )
 
 MIDDLEWARE_CLASSES = (

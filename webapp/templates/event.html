@@ -50,6 +50,10 @@
             {% if event.url %}
                 <h4><i class="glyphicon glyphicon-globe"></i> <a href="{{ event.url }}" target="_blank">{{ event.url }}</a></h4>
             {% endif %}
+            <div class="location">
+              <h4><span class="glyphicon glyphicon-map-marker"></span> Lokalizacja</h4>
+              <div id="map" style="height: 180px;"></div>
+            </div>
             {% if event.orgs.exists %}
                 <h4>
                     <i class="glyphicon glyphicon-user"></i>
@@ -81,4 +85,30 @@
             {% endif %}
         </div>
     </div>
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static "css/vendor/leaflet.css" %}" rel="stylesheet" />
+<link href="{% static "css/vendor/leaflet.fullscreen.css" %}" rel="stylesheet" />
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static "js/vendor/leaflet.js" %}"></script>
+<script src="{% static "js/vendor/leaflet.fullscreen.min.js" %}"></script>
+<script>
+    var lat = "{{ event.latitude|stringformat:"f" }}";
+    var lon = "{{ event.longitude|stringformat:"f" }}";
+    var map = L.map('map', {
+        center: [lat, lon],
+        zoom: 15,
+        fullscreenControl: true
+    });
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}).addTo(map);
+
+    L.marker([lat, lon]).addTo(map);
+</script>
 {% endblock %}

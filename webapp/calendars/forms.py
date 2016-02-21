@@ -27,12 +27,14 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = (
-            'title', 'place',
+            'title', 'place', 'location',
             'description', 'categories',
             'start_time', 'end_time',
-            'image', 'url',
+            'image', 'url', 'latitude', 'longitude'
         )
         widgets = {
             'start_time': dt_widget(),
             'end_time': dt_widget(),
+            'latitude': forms.HiddenInput(),
+            'longitude': forms.HiddenInput(),
         }

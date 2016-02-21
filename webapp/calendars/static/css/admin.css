@@ -1,0 +1,15 @@
+/* fix map display in admin view */
+div.field-location {
+	overflow: inherit !important;
+}
+
+/* map view size during event creation */
+div.osmfield-map {
+	width: 600px !important;
+  height: 400px !important;
+}
+
+/* hide latitiude and longitude fields */
+div.field-latitude, div.field-longitude {
+  display: none;
+}

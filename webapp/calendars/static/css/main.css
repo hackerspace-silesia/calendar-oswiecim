@@ -141,6 +141,12 @@ img.event-img {
 	font-weight: bold;
 }
 
+/* map view size during event creation */
+div.osmfield-map {
+	width: 600px !important;
+	height: 400px !important;
+}
+
 .about-us img {
     margin: 0 auto;
 }
