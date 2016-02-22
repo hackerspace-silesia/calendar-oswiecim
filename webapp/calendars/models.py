@@ -47,7 +47,7 @@ class Category(models.Model):
 class Organizer(models.Model):
     name = models.CharField(max_length=200, verbose_name="Nazwa")
     logo = models.ImageField(upload_to='logo/%m/', blank=True, null=True, verbose_name="Logo")
-    user = models.OneToOneField(User, blank=True, null=True, related_name='organizer', verbose_name="Użytkownik")
+    user = models.ManyToManyField(User, blank=True, related_name='organizer', verbose_name="Użytkownik")
 
     def __str__(self):
         return self.name
