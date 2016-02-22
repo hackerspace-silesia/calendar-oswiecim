@@ -14,10 +14,10 @@ class Event(models.Model):
     #point = models.PointField(blank=True, null=True, verbose_name="Miejsce na mapie")
     orgs = models.ManyToManyField('Organizer', blank=True, related_name='events', verbose_name="Organizator")
     user = models.ForeignKey(User, blank=True, null=True, related_name='event', verbose_name='Użytkownik')
-    categories = models.ManyToManyField('Category', blank=True, null=True, verbose_name="Kategoria")
+    categories = models.ManyToManyField('Category', blank=True, verbose_name="Kategoria")
     url = models.URLField(blank=True, null=True, verbose_name="Adres www")
 
-    location = OSMField(verbose_name="Położenie na mapie", lat_field='latitude', lon_field='longitude')
+    location = OSMField(default='Oświęcim', verbose_name="Położenie na mapie", lat_field='latitude', lon_field='longitude')
     latitude = LatitudeField(default=50.038, verbose_name="Długość geograficzna")
     longitude = LongitudeField(default=19.221, verbose_name="Szerokość geograficzna")
 
@@ -47,7 +47,8 @@ class Category(models.Model):
 class Organizer(models.Model):
     name = models.CharField(max_length=200, verbose_name="Nazwa")
     logo = models.ImageField(upload_to='logo/%m/', blank=True, null=True, verbose_name="Logo")
-    user = models.OneToOneField(User, blank=True, null=True, related_name='organizer', verbose_name="Użytkownik")
+    user = models.ManyToManyField(User, blank=True, related_name='organizer', verbose_name="Użytkownik")
+    url = models.URLField(blank=True, null=True, verbose_name="Adres www")
 
     def __str__(self):
         return self.name
