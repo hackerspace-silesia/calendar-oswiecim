@@ -67,7 +67,7 @@
                                 <img src='{{ logo.url }}'/>
                                 {% endthumbnail %}
                             {% endif %}
-                            <strong>{{ org.name }}</strong>
+                            <strong>{{ org.name }}</strong> {% if org.url %} <a href="{{ org.url }}" title="Strona organizatora"><span class="glyphicon glyphicon-link"></span></a> {% endif %}
                         </li>
                     {% endfor %}
                 </ul>
