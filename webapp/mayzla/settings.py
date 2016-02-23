@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'dbbackup',
     'osm_field',
+    'easy_select2',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -132,3 +133,6 @@ THUMBNAIL_PRESERVE_FORMAT=True
 DBBACKUP_STORAGE_OPTIONS = {
     'location': 'change-me-to-proper-dir-for-backups',
 }
+
+# We already use jquery in admin, so don't load again
+SELECT2_USE_BUNDLED_JQUERY = False
