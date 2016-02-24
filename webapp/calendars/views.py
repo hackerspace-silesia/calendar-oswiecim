@@ -91,7 +91,7 @@ class EventCreateView(EventFieldsMixin, HasAccessView, CreateView, HasAccessMixi
             return resp
         if self.object is not None:
             try:
-                org = request.user.organizer
+                org = Organizer.objects.get(user=request.user.id)
             except Organizer.DoesNotExist:
                 pass
             else:
