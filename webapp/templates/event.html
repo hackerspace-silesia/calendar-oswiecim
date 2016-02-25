@@ -8,7 +8,7 @@
             </h1>
             {% if event.categories.count > 0 %}
             <h5>
-                Kategorie:
+                <span class="glyphicon glyphicon-tags"></span>
                 {% for category in event.categories.all %}
                     <span class="label label-{{ category.color|default:"primary" }}">
                         {{ category.name }}
