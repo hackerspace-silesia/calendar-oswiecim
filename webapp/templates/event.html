@@ -17,10 +17,9 @@
             </h5>
             {% endif %}
             {% if can_edit %}
-                <a class="btn btn-default" href="{% url 'event_update' pk=event.pk %}">EDYTUJ</a> <br/>
-            {% endif %}
-            {% if event.place %}
-                <h4 title="Miejsce wydarzenia"><span class="glyphicon glyphicon-map-marker"></span> {{ event.place }}</h4>
+            <p>
+              <a class="btn btn-default" href="{% url 'event_update' pk=event.pk %}">EDYTUJ</a>
+            </p>
             {% endif %}
             <div class="row">
                 <div class="col col-md-6 schedule schedule-begin">
@@ -47,13 +46,13 @@
                 {{ event.description }}
             </div>
             {% endautoescape %}
-            {% if event.url %}
-                <h4><i class="glyphicon glyphicon-globe"></i> <a href="{{ event.url }}" target="_blank">{{ event.url }}</a></h4>
-            {% endif %}
             <div class="location">
-              <h4><span class="glyphicon glyphicon-map-marker"></span> Lokalizacja</h4>
+              <h4 title="Miejsce wydarzenia"><span class="glyphicon glyphicon-map-marker"></span> {{ event.place }}</h4>
               <div id="map" style="height: 180px;"></div>
             </div>
+            {% if event.url %}
+            <h4><i class="glyphicon glyphicon-globe"></i> <a href="{{ event.url }}" target="_blank">{{ event.url }}</a></h4>
+            {% endif %}
             {% if event.orgs.exists %}
                 <h4>
                     <i class="glyphicon glyphicon-user"></i>
@@ -104,11 +103,11 @@
         fullscreenControl: true
     });
 
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 		}).addTo(map);
 
-    L.marker([lat, lon]).addTo(map);
+    L.marker([lat, lon]).addTo(map).bindPopup('{{ event.place }}');
 </script>
 {% endblock %}
