@@ -6,7 +6,7 @@ from osm_field.fields import LatitudeField, LongitudeField, OSMField
 
 class Event(models.Model):
     start_time = models.DateTimeField(db_index=True, verbose_name="Start wydarzenia")
-    end_time = models.DateTimeField(db_index=True, blank=True, null=True, verbose_name="Koniec wydarzenia")
+    end_time = models.DateTimeField(db_index=True, verbose_name="Koniec wydarzenia")
     title = models.CharField(max_length=120, verbose_name="Tytuł")
     description = RichTextField(verbose_name="Opis wydarzenia")
     image = models.ImageField(upload_to='event/%Y/%m/%d/', blank=True, null=True, verbose_name="Plakat")
