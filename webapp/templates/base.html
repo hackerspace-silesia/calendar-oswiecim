@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#" lang="pl-PL">
 {% load staticfiles %}
-<head lang="en">
+<head>
     <meta charset="UTF-8">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
-    {% block extra_css %}
-    {% endblock %}
-
+    {% block extra_css %}{% endblock %}
     <script src="{% static 'js/vendor/jquery.min.js' %}"></script>
     <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kalendarz Oświęcim</title>
-    {% block media %} {%endblock%}
+    {% block extra_head %}{% endblock %}
+    {% block media %}{%endblock%}
 </head>
 <body>
 <nav class="navbar navbar-inverse">

@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 {% load thumbnail staticfiles %}
+
+{% block extra_head %}
+<title>Oświęcim - Tu Się Dzieje! | {{ event.title }}</title>
+<meta property="og:title" content="{{ event.title }}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:image" content="http://{{ request.get_host }}{% static 'img/osw_x200.jpg' %}" />
+<meta property="og:site_name" content="Oświęcim - Tu Się Dzieje!">
+<meta property="og:description" content="{{ event.description|safe|striptags|truncatewords:25 }}" />
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-md-6">
