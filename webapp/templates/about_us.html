@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+
+{% block extra_head %}
+<title>Oświęcim - Tu Się Dzieje! | O Nas</title>
+<meta property="og:title" content="Oświęcim - Tu Się Dzieje! | O Nas" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:image" content="http://{{ request.get_host }}{% static 'img/osw_x200.jpg' %}" />
+<meta property="og:description" content="Dzięki temu kalendarzowi, każdy chętny
+użytkownik będzie mógł pełniej i lepiej korzystać z oferty wydarzeń jaka
+funkcjonuje w naszym mieście, a każdy, kto wydarzenia organizuje - będzie je
+mógł promować i docierać z informacją do szerokiego grona odbiorców." />
+
+{% endblock %}
+
+
 {% block content %}
     <article class="about-us text-justify">
         <div class="col-md-6">
