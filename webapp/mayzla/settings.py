@@ -75,6 +75,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'calendars.context_processors.can_add_new_event',
+                'calendars.context_processors.google_analytics',
             ],
         },
     },
@@ -136,3 +137,6 @@ DBBACKUP_STORAGE_OPTIONS = {
 
 # We already use jquery in admin, so don't load again
 SELECT2_USE_BUNDLED_JQUERY = False
+
+# Google Analytics - obtain your tracking ID from GA account
+GOOGLE_ANALYTICS_PROPERTY_ID = ''
