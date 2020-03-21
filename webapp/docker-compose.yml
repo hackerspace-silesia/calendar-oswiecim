@@ -1,0 +1,16 @@
+version: '3'
+services:
+  webapp:
+    build: .
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+    environment:
+      - DB_USER
+      - DB_PASS
+      - DB_NAME
+    links:
+      - db
+  db:
+    image: postgres:12.2
