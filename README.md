@@ -34,14 +34,11 @@ WEBP wymaga libwebp-devel
 WEBPMUX wymaga libwebp-devel
 ```
 
-###### PostGIS
-Konieczne jest zainstalowanie GEOS, GDAL, PROJ.4 i PostGISa.
-Więcej informacji na:
-https://docs.djangoproject.com/en/1.8/ref/contrib/gis/install/postgis/
-oraz
-https://docs.djangoproject.com/en/1.8/ref/contrib/gis/install/geolibs/
+###### Instalacja
 
-###### (DEPRECATED!!) sqlite3 jako spatial database
-Konieczne jest zainstalowanie GEOS, GDAL i SpatiaLite.
-Poza tym należy upewnić się, że python został skompilowany z opcją `--enable-loadable-sqlite-extensions`.
-
+```
+docker-compose build
+docker-compose run webapp python manage.py migrate
+docker-compose run webapp python manage.py createsuperuser
+docker-compose run --service-ports webapp python manage.py runserver 0.0.0.0:8000
+```
