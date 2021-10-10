@@ -1,6 +1,7 @@
 import datetime
 
 from braces.views import LoginRequiredMixin
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.core import serializers
@@ -25,8 +26,8 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        future_events = Event.objects.filter(start_time__gte=datetime.datetime.now()).order_by('start_time')[:12]
-        past_events = Event.objects.filter(start_time__lt=datetime.datetime.now()).order_by('-start_time')[:12 - future_events.count()]
+        future_events = Event.objects.filter(start_time__gte=datetime.datetime.now()).order_by('start_time')[:settings.EVENTS_NUMBER_HOMEPAGE]
+        past_events = Event.objects.filter(start_time__lt=datetime.datetime.now()).order_by('-start_time')[:settings.EVENTS_NUMBER_HOMEPAGE - future_events.count()]
         dt_now = timezone.now()
         for event in past_events:
             event.is_old = event.end_time < dt_now
@@ -48,7 +49,7 @@ class EventListView(ListView):
 
 
 class HasAccessView(object):
-    HAS_ACCESS_ERROR_MSG = 'Nie masz uprawnien do tej strony!'
+    HAS_ACCESS_ERROR_MSG = 'Nie masz uprawnień do tej strony!'
 
     def get(self, request, *args, **kwargs):
         if not self.has_access(request.user)[0]:

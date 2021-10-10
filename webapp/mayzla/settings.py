@@ -140,3 +140,5 @@ SELECT2_USE_BUNDLED_JQUERY = False
 
 # Google Analytics - obtain your tracking ID from GA account
 GOOGLE_ANALYTICS_PROPERTY_ID = ''
+
+EVENTS_NUMBER_HOMEPAGE = 30
