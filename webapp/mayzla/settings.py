@@ -88,6 +88,8 @@ WSGI_APPLICATION = 'mayzla.wsgi.application'
 # DATABASES = {'default': dj_database_url.config(default='postgres://cal:cal@localhost/cal')}
 DATABASES = {'default': dj_database_url.config(default='sqlite:///db.sqlite3')}
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -100,7 +102,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

@@ -5,13 +5,7 @@ Kalendarz wydarzeń dla Oświęcimia [Koduj Dla Polski]
 
 ### Zależności
 
-```
-django==1.8.3
-pillow==2.9.0
-sorl-thumbnail==12.3
-django-ckeditor==4.5.0
-django-braces==1.8.1
-```
+Są dostępne w pliku `requirements.txt
 
 ###### import starych danych
 

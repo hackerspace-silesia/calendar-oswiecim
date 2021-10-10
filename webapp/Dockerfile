@@ -1,6 +1,6 @@
-FROM python:3.8
+FROM python:3.9
 
-MAINTAINER galuszkak@gmail.com
+LABEL org.opencontainers.image.authors="galuszkak@gmail.com"
 
 COPY . /app
 WORKDIR /app
