@@ -16,11 +16,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='event',
             name='user',
-            field=models.ForeignKey(verbose_name='Użytkownik', to=settings.AUTH_USER_MODEL, null=True, blank=True, related_name='event'),
+            field=models.ForeignKey(verbose_name='Użytkownik', to=settings.AUTH_USER_MODEL, null=True, blank=True, related_name='event', on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='event',
             name='category',
-            field=models.ForeignKey(verbose_name='Kategoria', null=True, blank=True, to='calendars.Category'),
+            field=models.ForeignKey(verbose_name='Kategoria', null=True, blank=True, to='calendars.Category', on_delete=models.CASCADE),
         ),
     ]

@@ -33,11 +33,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='organizer',
             name='user',
-            field=models.OneToOneField(null=True, related_name='organizer', blank=True, to=settings.AUTH_USER_MODEL, verbose_name='Użytkownik'),
+            field=models.OneToOneField(null=True, related_name='organizer', blank=True, to=settings.AUTH_USER_MODEL, verbose_name='Użytkownik', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='event',
             name='category',
-            field=models.ForeignKey(null=True, blank=True, to='calendars.Category'),
+            field=models.ForeignKey(null=True, blank=True, to='calendars.Category', on_delete=models.CASCADE),
         ),
     ]

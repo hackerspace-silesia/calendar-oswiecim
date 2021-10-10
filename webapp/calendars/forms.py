@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.admin import widgets
-from datetimewidget.widgets import DateTimeWidget
+# from datetimewidget.widgets import DateTimeWidget
 from .models import Event
 
 
@@ -9,17 +9,17 @@ class LoginForm(forms.Form):
     password = forms.CharField(label='Hasło', widget=forms.PasswordInput())
 
 
-date_time_options = {
-    'format': 'dd.mm.yyyy hh:ii',
-    'language': 'pl'
-}
+# date_time_options = {
+#     'format': 'dd.mm.yyyy hh:ii',
+#     'language': 'pl'
+# }
 
 
-def dt_widget():
-    return DateTimeWidget(
-        bootstrap_version=3,
-        options=date_time_options
-    )
+# def dt_widget():
+#     return DateTimeWidget(
+#         bootstrap_version=3,
+#         options=date_time_options
+#     )
 
 
 class EventForm(forms.ModelForm):
@@ -33,8 +33,8 @@ class EventForm(forms.ModelForm):
             'image', 'url', 'latitude', 'longitude'
         )
         widgets = {
-            'start_time': dt_widget(),
-            'end_time': dt_widget(),
+#            'start_time': dt_widget(),
+#            'end_time': dt_widget(),
             'latitude': forms.HiddenInput(),
             'longitude': forms.HiddenInput(),
         }

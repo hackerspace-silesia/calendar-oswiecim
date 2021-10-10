@@ -13,7 +13,7 @@ class Event(models.Model):
     place = models.CharField(max_length=120, verbose_name="Miejsce")
     #point = models.PointField(blank=True, null=True, verbose_name="Miejsce na mapie")
     orgs = models.ManyToManyField('Organizer', blank=True, related_name='events', verbose_name="Organizator")
-    user = models.ForeignKey(User, blank=True, null=True, related_name='event', verbose_name='Użytkownik')
+    user = models.ForeignKey(User, blank=True, null=True, related_name='event', verbose_name='Użytkownik', on_delete=models.SET_NULL)
     categories = models.ManyToManyField('Category', blank=True, verbose_name="Kategoria")
     url = models.URLField(blank=True, null=True, verbose_name="Adres www")
 
