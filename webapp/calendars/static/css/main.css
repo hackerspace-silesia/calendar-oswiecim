@@ -67,6 +67,14 @@ a.link-to-event:hover, a.link-to-event:active {
 	color: #333;
 	text-decoration: none;
 }
+a.event {
+	text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+	height: 2.2em;
+}
 
 img.event-img {
 	width: 100%;
