@@ -4,7 +4,7 @@
         <div class="disabled-background">ZAKOŃCZONE</div>
         <div class="panel-heading">
             <h3 class="panel-title">
-                <a href="{% url 'event_details' event.id %}">{{ event.title }}</a>
+                <a class="event" href="{% url 'event_details' event.id %}">{{ event.title }}</a>
                 <div class="event-labels">
                     {% for category in event.categories.all %}
                         <span class="label label-{{ category.color|default:"primary" }}">
