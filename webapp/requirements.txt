@@ -5,7 +5,7 @@ sorl-thumbnail==12.7.0
 django-widget-tweaks==1.4.8
 django-ckeditor==6.1.0
 django-braces==1.14.0
-django-datetime-widget==0.9.3
+django-datetime-widget2==0.9.5
 django-ical==1.8.0
 dj-database-url
 pytz

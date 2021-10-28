@@ -17,6 +17,7 @@
         <a class="link-to-event" href="{% url 'event_details' event.id %}">
         <div class="panel-body">
             <i class="glyphicon glyphicon-calendar"></i> {{ event.start_time|date:"j.m.Y" }}
+            <i class="glyphicon glyphicon-time"></i> {{ event.start_time|date:"G:i" }}
             {% if event.image %}
                 {% thumbnail event.image "300x100" crop="center" as im %}
                     <img src="{{ im.url }}" class="img-responsive img-rounded event-img">
